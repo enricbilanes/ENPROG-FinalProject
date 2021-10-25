@@ -1,0 +1,158 @@
+﻿@{
+    ViewData["Title"] = "About Us";
+}
+
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+    }
+
+    header {
+        height: 60px;
+        background: #262626;
+        padding: 0 50px;
+    }
+
+    .logo {
+        width: 30%;
+        float: left;
+        color: #fff;
+        font-weight: bold;
+        text-transform: uppercase;
+        line-height: 60px;
+        font-size: 35px;
+        font-family: sans-serif;
+    }
+
+    nav {
+        width: 70%;
+        float: right;
+    }
+
+        nav ul {
+            list-style: none;
+            float: right;
+        }
+
+            nav ul li {
+                display: inline-block;
+            }
+
+                nav ul li a {
+                    text-decoration: none;
+                    color: #fff;
+                    font-family: sans-serif;
+                    font-weight: bold;
+                    margin: 0 10px;
+                    line-height: 60px;
+                    text-transform: uppercase;
+                }
+
+    .banner {
+        height: 100%;
+    }
+
+        .banner img {
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            width: 60%;
+        }
+
+
+
+    /* Three image containers (use 25% for four, and 50% for two, etc) */
+    .column {
+        float: left;
+        width: 33.33%;
+        padding: 5px;
+    }
+
+    /* Clear floats after image containers */
+    .row::after {
+        content: "";
+        clear: both;
+        display: table;
+    }
+
+    .row {
+        display: flex;
+    }
+
+    .column {
+        flex: 33.33%;
+        padding: 5px;
+    }
+
+
+
+    .content {
+        padding: 5%;
+    }
+
+        .content p {
+            font-size: 18px;
+            line-height: 1.7;
+            font-family: sans-serif;
+            margin-bottom: 25px;
+        }
+
+    footer {
+        background: #000;
+        color: #fff;
+        padding: 15px 50px;
+        text-align: center;
+    }
+
+
+
+
+    header {
+        width: 100%;
+        height: 100%;
+        padding: 0;
+        text-align: center;
+    }
+
+    .logo {
+        width: 100%;
+        float: none;
+    }
+
+    nav {
+        width: 100%;
+        float: none;
+    }
+
+        nav ul li {
+            display: block;
+        }
+
+        nav ul {
+            float: none;
+        }
+    }
+</style>
+<body style="background-color: #CEF6F5;">
+    <h1>@ViewData["Title"]</h1>
+    <div class="content">
+        <p>
+            Since the pandemic, the Philippines has had many problems in different areas mostly in health-care.
+            By attempting to fix these problems the country has been in debt from different private organizations.
+            Multiple private organizations in the Philippines that are affected by the pandemic are in the same situation as well.
+            <br />
+            <br />
+            Currently, funding is one of the biggest problems experienced by different organizations, especially hospitals.
+            Multiple hospitals are currently lacking decent materials and protection for its frontliners.
+            Some hospitals are resorting to alternative PPE like grocery bags, helmets, Plastic bottles, etc.
+            Multiple Health workers have already resigned and flew to different countries for a better system.
+            <br />
+            <br />
+            Backup to the front is a web application that would accept monetary donations of registered users for
+            beneficiaries/organizations that need it the most. The welcome page would be available to any visitors
+            to the web application and would consist of the promotion and advertising for our medical frontliners.
+        </p>
+        <br>
+    </div>
+</body>

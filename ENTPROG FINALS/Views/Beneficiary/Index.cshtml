@@ -1,0 +1,47 @@
+﻿@model IEnumerable<ENTPROG_FINALS.Models.Beneficiary>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Beneficiaries)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Decsription)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DonationSummary)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Beneficiaries)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Decsription)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DonationSummary)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.BeneficiaryID">Edit</a> |
+                <a asp-action="Delete" asp-route-id="@item.BeneficiaryID"
+                   onclick='return confirm("Are You Sure?");'>Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

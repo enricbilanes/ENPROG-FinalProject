@@ -1,0 +1,65 @@
+﻿@model IEnumerable<ENTPROG_FINALS.Models.Donation>
+
+@{
+    ViewData["Title"] = "List";
+}
+
+<h1>List</h1>
+
+<p>
+    <a asp-action="Create"  class="btn btn-primary" >Create a Donation</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.DonationID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Role)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DonationAmount)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Beneficiary)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Anonymous)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.DonationID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Role)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DonationAmount)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Beneficiary)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Anonymous)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.DonationID" class="btn btn-warning btn-sm">Edit</a> |
+
+                <a asp-action="Delete" asp-route-id="@item.DonationID" class="btn btn-danger btn-sm" onclick='return confirm("Are you sure?");'>Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

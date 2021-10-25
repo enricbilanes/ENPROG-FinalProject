@@ -7498,19 +7498,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\keno-pc\\.nuget\\packages\\": {}
+    "C:\\Users\\Myko\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\keno-pc\\Desktop\\ENTPROG FINALS with all fixes\\ENTPROG FINALS\\ENTPROG FINALS.csproj",
+      "projectUniqueName": "C:\\Users\\Myko\\Source\\Repos\\ENPROG-FinalProject\\ENTPROG FINALS\\ENTPROG FINALS.csproj",
       "projectName": "ENTPROG FINALS",
-      "projectPath": "C:\\Users\\keno-pc\\Desktop\\ENTPROG FINALS with all fixes\\ENTPROG FINALS\\ENTPROG FINALS.csproj",
-      "packagesPath": "C:\\Users\\keno-pc\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\keno-pc\\Desktop\\ENTPROG FINALS with all fixes\\ENTPROG FINALS\\obj\\",
+      "projectPath": "C:\\Users\\Myko\\Source\\Repos\\ENPROG-FinalProject\\ENTPROG FINALS\\ENTPROG FINALS.csproj",
+      "packagesPath": "C:\\Users\\Myko\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Myko\\Source\\Repos\\ENPROG-FinalProject\\ENTPROG FINALS\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\keno-pc\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\Myko\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -7601,7 +7601,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.402\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.303\\RuntimeIdentifierGraph.json"
       }
     }
   }

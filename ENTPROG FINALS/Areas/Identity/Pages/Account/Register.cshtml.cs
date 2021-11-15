@@ -89,8 +89,10 @@ namespace ENTPROG_FINALS.Areas.Identity.Pages.Account
                     /* Member ID is created by a UDF from database */
                     FirstName = Input.FirstName,
                     LastName = Input.LastName,
+                    UserName = Input.Email,
                     Email = Input.Email,
-                    PassWord = Input.Password,
+                    NormalizedEmail = Input.Email,
+                    RoleSetting = RoleType.User,
                     //Added this 
                     EmailConfirmed = true
                 };

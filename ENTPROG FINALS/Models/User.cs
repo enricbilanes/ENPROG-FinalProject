@@ -24,5 +24,15 @@ namespace ENTPROG_FINALS.Models
 
         [Required(ErrorMessage = "Required.")]
         public string PassWord { get; set; }
+
+        [Display(Name = "Role Type")]
+        public RoleType RoleSetting { get; set; }
+
+    }
+
+    public enum RoleType
+    {
+        User = 1,
+        Admin = 2
     }
 }

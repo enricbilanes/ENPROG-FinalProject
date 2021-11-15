@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 using ENTPROG_FINALS.Data;
 using ENTPROG_FINALS.Models;
+using System.Security.Claims;
+using Microsoft.EntityFrameworkCore;
+
 namespace ENTPROG_FINALS.Controllers
 {
     public class DonationsController : Controller
@@ -30,12 +33,19 @@ namespace ENTPROG_FINALS.Controllers
         [HttpPost]
         public IActionResult Create(Donation record)
         {
+            //To capture the user, userid, and object (to check if logged in or not)
+            var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            var user = _context.Users.Where(u => u.Id == userId).SingleOrDefault();
+
+
             var donation = new Donation();
             {
                 //Name should be auto inputted
                 donation.DonationAmount = record.DonationAmount;
                 donation.Beneficiary = record.Beneficiary;
                 donation.Anonymous = record.Anonymous;
+                donation.User = user;
+                donation.UserId = Guid.Parse(userId);
             }
 
             _context.Donations.Add(donation);

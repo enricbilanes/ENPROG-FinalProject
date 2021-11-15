@@ -13,9 +13,11 @@ namespace ENTPROG_FINALS.Models
         public string DonationID { get; set; }
 
         public string Role { get; set; }
+        
+        //user changes
 
-        [Required(ErrorMessage = "Required.")]
-        public string Name { get; set; }
+        public virtual User User { get; set; }
+        public Guid? UserId { get; set; }
 
         [Required(ErrorMessage = "Required.")]
         public int DonationAmount { get; set; }

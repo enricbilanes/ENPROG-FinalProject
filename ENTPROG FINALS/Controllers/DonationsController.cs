@@ -37,11 +37,13 @@ namespace ENTPROG_FINALS.Controllers
             var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
             var user = _context.Users.Where(u => u.Id == userId).SingleOrDefault();
 
-
             var donation = new Donation();
             {
                 //Name should be auto inputted
-                
+
+                var list = _context.Donations.ToList();
+                donation.DonationID = "DS" + String.Format("{0:00000000}", (list.Count + 1));
+
                 donation.DonationAmount = record.DonationAmount;
                 donation.Beneficiary = record.Beneficiary;
                 donation.Anonymous = record.Anonymous;
@@ -81,7 +83,7 @@ namespace ENTPROG_FINALS.Controllers
                 donation.Anonymous = record.Anonymous;
             }
 
-            _context.Donations.Add(donation);
+            _context.Donations.Update(donation);
             _context.SaveChanges();
 
             return RedirectToAction("List");
@@ -105,6 +107,7 @@ namespace ENTPROG_FINALS.Controllers
 
             return View("List");
         }
+
 
     }
 }

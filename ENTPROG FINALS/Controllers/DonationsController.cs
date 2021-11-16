@@ -41,6 +41,7 @@ namespace ENTPROG_FINALS.Controllers
             var donation = new Donation();
             {
                 //Name should be auto inputted
+                
                 donation.DonationAmount = record.DonationAmount;
                 donation.Beneficiary = record.Beneficiary;
                 donation.Anonymous = record.Anonymous;

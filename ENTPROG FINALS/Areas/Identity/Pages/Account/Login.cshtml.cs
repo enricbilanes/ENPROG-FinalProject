@@ -86,6 +86,9 @@ namespace ENTPROG_FINALS.Areas.Identity.Pages.Account
                 if (result.Succeeded)
                 {
                     _logger.LogInformation("User logged in.");
+
+                    //userId = User.Identity.GetUserId();
+
                     return LocalRedirect(returnUrl);
                 }
                 if (result.RequiresTwoFactor)

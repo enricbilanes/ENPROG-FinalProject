@@ -54,7 +54,6 @@ namespace ENTPROG_FINALS.Areas.Identity.Pages.Account
             [Required(ErrorMessage = "Required.")]
             [Display(Name = "Last Name")]
             public string LastName { get; set; }
-            //^^^^^
 
             [Required]
             [EmailAddress]
@@ -92,8 +91,9 @@ namespace ENTPROG_FINALS.Areas.Identity.Pages.Account
                     UserName = Input.Email,
                     Email = Input.Email,
                     NormalizedEmail = Input.Email,
+                    PassWord = Input.Password,
                     RoleSetting = RoleType.User,
-                    //Added this 
+                    
                     EmailConfirmed = true
                 };
                 var result = await _userManager.CreateAsync(user, Input.Password);

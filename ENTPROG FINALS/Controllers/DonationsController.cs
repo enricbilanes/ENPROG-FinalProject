@@ -43,7 +43,7 @@ namespace ENTPROG_FINALS.Controllers
 
                 var list = _context.Donations.ToList();
                 donation.DonationID = "DS" + String.Format("{0:00000000}", (list.Count + 1));
-
+                donation.Role = user.RoleSetting.ToString();
                 donation.DonationAmount = record.DonationAmount;
                 donation.Beneficiary = record.Beneficiary;
                 donation.Anonymous = record.Anonymous;

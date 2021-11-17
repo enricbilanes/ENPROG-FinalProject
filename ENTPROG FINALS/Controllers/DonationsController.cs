@@ -22,7 +22,7 @@ namespace ENTPROG_FINALS.Controllers
 
         public IActionResult List()
         {
-            var list = _context.Donations.ToList();
+            var list = _context.Donations.Include(u => u.User).ToList();
             return View(list);
         }
 

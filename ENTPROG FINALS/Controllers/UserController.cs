@@ -38,6 +38,7 @@ namespace ENTPROG_FINALS.Controllers
                 users.LastName = record.LastName;
                 users.Email = record.Email;
                 users.PassWord = record.PassWord;
+                users.RoleSetting = ;
             }
 
             _context.Users.Add(users);

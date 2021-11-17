@@ -46,7 +46,6 @@ namespace ENTPROG_FINALS.Areas.Identity.Pages.Account
 
         public class InputModel
         {
-            //Added
             [Required(ErrorMessage = "Required.")]
             [Display(Name = "First Name")]
             public string FirstName { get; set; }
@@ -85,7 +84,6 @@ namespace ENTPROG_FINALS.Areas.Identity.Pages.Account
             if (ModelState.IsValid)
             {
                 var user = new User {
-                    /* Member ID is created by a UDF from database */
                     FirstName = Input.FirstName,
                     LastName = Input.LastName,
                     UserName = Input.Email,

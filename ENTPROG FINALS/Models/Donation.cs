@@ -13,8 +13,6 @@ namespace ENTPROG_FINALS.Models
         public string DonationID { get; set; }
 
         public string Role { get; set; }
-        
-        //user changes
 
         public virtual User User { get; set; }
         public Guid? UserId { get; set; }

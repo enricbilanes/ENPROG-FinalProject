@@ -33,12 +33,13 @@ namespace ENTPROG_FINALS.Controllers
         {
             var users = new User();
             {
-                //Name should be auto inputted
+                var list = _context.Users.ToList();
+                users.MemberID = "MS" + String.Format("{0:00000000}", (list.Count + 1));
                 users.FirstName = record.FirstName;
                 users.LastName = record.LastName;
                 users.Email = record.Email;
                 users.PassWord = record.PassWord;
-                users.RoleSetting = ;
+                users.RoleSetting = RoleType.User;
             }
 
             _context.Users.Add(users);

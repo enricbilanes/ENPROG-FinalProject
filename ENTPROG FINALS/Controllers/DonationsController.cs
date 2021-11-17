@@ -22,8 +22,7 @@ namespace ENTPROG_FINALS.Controllers
 
         public IActionResult List()
         {
-            //CHANGED THIS TO 'FIX DELETE ISSUE' 
-            var list = _context.Donations.Include(u => User).ToList();
+            var list = _context.Donations.Include(u => u.User).ToList();
             return View(list);
         }
 

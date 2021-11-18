@@ -34,9 +34,10 @@ namespace ENTPROG_FINALS.Controllers
         {
             var Beneficiary = new Beneficiary();
             {
-                Beneficiary.BeneficiaryID = record.BeneficiaryID;
+                var list = _context.Beneficiaries.ToList();
+                Beneficiary.BeneficiaryID = "BY" + String.Format("{0:00000000}", (list.Count + 1));
                 Beneficiary.Beneficiaries = record.Beneficiaries;
-                Beneficiary.Decsription = record.Beneficiaries;
+                Beneficiary.Decsription = record.Decsription;
                 Beneficiary.DonationSummary = record.DonationSummary;
             };
             _context.Beneficiaries.Add(Beneficiary);
@@ -65,7 +66,7 @@ namespace ENTPROG_FINALS.Controllers
             var Beneficiary = _context.Beneficiaries.Where(i => i.BeneficiaryID.Equals(id)).SingleOrDefault();
             {
                 Beneficiary.Beneficiaries = record.Beneficiaries;
-                Beneficiary.Decsription = record.Beneficiaries;
+                Beneficiary.Decsription = record.Decsription;
                 Beneficiary.DonationSummary = record.DonationSummary;
 
                 _context.Beneficiaries.Update(Beneficiary);

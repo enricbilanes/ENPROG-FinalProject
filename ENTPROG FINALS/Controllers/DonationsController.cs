@@ -22,7 +22,7 @@ namespace ENTPROG_FINALS.Controllers
 
         public IActionResult List()
         {
-            var list = _context.Donations.Include(u => u.User).ToList();
+            var list = _context.Donations.ToList();
             return View(list);
         }
 
@@ -39,15 +39,14 @@ namespace ENTPROG_FINALS.Controllers
 
             var donation = new Donation();
             {
-                //Name should be auto inputted
-
                 var list = _context.Donations.ToList();
                 donation.DonationID = "DS" + String.Format("{0:00000000}", (list.Count + 1));
                 donation.Role = user.RoleSetting.ToString();
                 donation.DonationAmount = record.DonationAmount;
                 donation.Beneficiary = record.Beneficiary;
                 donation.Anonymous = record.Anonymous;
-                donation.User = user;
+                donation.FirstName = user.FirstName;
+                donation.LastName = user.LastName;
                 donation.UserId = Guid.Parse(userId);
             }
 
@@ -96,7 +95,7 @@ namespace ENTPROG_FINALS.Controllers
                 return RedirectToAction("List");
             }
 
-            var donation = _context.Donations.Where(i => i.DonationID == id).SingleOrDefault();
+            var donation = _context.Donations.Where(i => i.DonationID.Equals(id)).SingleOrDefault();
             if (donation == null)
             {
                 return RedirectToAction("List");
@@ -105,7 +104,7 @@ namespace ENTPROG_FINALS.Controllers
             _context.Donations.Remove(donation);
             _context.SaveChanges();
 
-            return View("List");
+            return RedirectToAction();
         }
 
 

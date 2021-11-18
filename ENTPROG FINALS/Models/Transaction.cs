@@ -10,7 +10,7 @@ namespace ENTPROG_FINALS.Models
     public class Transaction
     {
         [Key]
-        public string TransactionID { get; set; }
+        public int TransactionID { get; set; }
 
         public string Table { get; set; }
 

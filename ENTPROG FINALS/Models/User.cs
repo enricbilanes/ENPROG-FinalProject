@@ -5,13 +5,14 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Identity;
 
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace ENTPROG_FINALS.Models
 {
     public class User : IdentityUser
     {
-        [Key]
-        public string MemberID { get; set; }
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        public int MemberID { get; set; }
 
         [Required(ErrorMessage = "Required.")]
         public string FirstName { get; set; }

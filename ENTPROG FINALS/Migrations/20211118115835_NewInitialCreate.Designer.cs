@@ -10,21 +10,23 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace ENTPROG_FINALS.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20211022095515_IntitialCreate")]
-    partial class IntitialCreate
+    [Migration("20211118115835_NewInitialCreate")]
+    partial class NewInitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
-                .HasAnnotation("ProductVersion", "5.0.11")
+                .HasAnnotation("ProductVersion", "5.0.12")
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
             modelBuilder.Entity("ENTPROG_FINALS.Models.Beneficiary", b =>
                 {
-                    b.Property<string>("BeneficiaryID")
-                        .HasColumnType("nvarchar(450)");
+                    b.Property<int>("BeneficiaryID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<string>("Beneficiaries")
                         .IsRequired()
@@ -44,8 +46,10 @@ namespace ENTPROG_FINALS.Migrations
 
             modelBuilder.Entity("ENTPROG_FINALS.Models.Donation", b =>
                 {
-                    b.Property<string>("DonationID")
-                        .HasColumnType("nvarchar(450)");
+                    b.Property<int>("DonationID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<int>("Anonymous")
                         .HasColumnType("int");
@@ -57,12 +61,17 @@ namespace ENTPROG_FINALS.Migrations
                     b.Property<int>("DonationAmount")
                         .HasColumnType("int");
 
-                    b.Property<string>("Name")
-                        .IsRequired()
+                    b.Property<string>("FirstName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("LastName")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Role")
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<Guid?>("UserId")
+                        .HasColumnType("uniqueidentifier");
 
                     b.HasKey("DonationID");
 
@@ -71,8 +80,10 @@ namespace ENTPROG_FINALS.Migrations
 
             modelBuilder.Entity("ENTPROG_FINALS.Models.Transaction", b =>
                 {
-                    b.Property<string>("TransactionID")
-                        .HasColumnType("nvarchar(450)");
+                    b.Property<int>("TransactionID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<int>("Anonymous")
                         .HasColumnType("int");
@@ -134,8 +145,10 @@ namespace ENTPROG_FINALS.Migrations
                     b.Property<DateTimeOffset?>("LockoutEnd")
                         .HasColumnType("datetimeoffset");
 
-                    b.Property<string>("MemberID")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<int>("MemberID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<string>("NormalizedEmail")
                         .HasMaxLength(256)
@@ -157,6 +170,9 @@ namespace ENTPROG_FINALS.Migrations
 
                     b.Property<bool>("PhoneNumberConfirmed")
                         .HasColumnType("bit");
+
+                    b.Property<int>("RoleSetting")
+                        .HasColumnType("int");
 
                     b.Property<string>("SecurityStamp")
                         .HasColumnType("nvarchar(max)");

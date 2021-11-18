@@ -39,8 +39,6 @@ namespace ENTPROG_FINALS.Controllers
 
             var donation = new Donation();
             {
-                var list = _context.Donations.ToList();
-                donation.DonationID = "DS" + String.Format("{0:00000000}", (list.Count + 1));
                 donation.Role = user.RoleSetting.ToString();
                 donation.DonationAmount = record.DonationAmount;
                 donation.Beneficiary = record.Beneficiary;
@@ -56,7 +54,7 @@ namespace ENTPROG_FINALS.Controllers
             return RedirectToAction("List");
         }
 
-        public IActionResult Edit(string? id)
+        public IActionResult Edit(int? id)
         {
             if (id == null)
             {
@@ -72,7 +70,7 @@ namespace ENTPROG_FINALS.Controllers
             return View(donation);
         }      
         [HttpPost]
-        public IActionResult Edit(string? id, Donation record)
+        public IActionResult Edit(int? id, Donation record)
         {
             var donation = _context.Donations.Where(i => i.DonationID == id).SingleOrDefault();
             {
@@ -88,14 +86,14 @@ namespace ENTPROG_FINALS.Controllers
             return RedirectToAction("List");
         }
 
-        public IActionResult Delete(string? id)
+        public IActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return RedirectToAction("List");
             }
 
-            var donation = _context.Donations.Where(i => i.DonationID.Equals(id)).SingleOrDefault();
+            var donation = _context.Donations.Where(i => i.DonationID == id).SingleOrDefault();
             if (donation == null)
             {
                 return RedirectToAction("List");

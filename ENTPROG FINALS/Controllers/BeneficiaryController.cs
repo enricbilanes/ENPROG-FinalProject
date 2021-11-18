@@ -35,7 +35,6 @@ namespace ENTPROG_FINALS.Controllers
             var Beneficiary = new Beneficiary();
             {
                 var list = _context.Beneficiaries.ToList();
-                Beneficiary.BeneficiaryID = "BY" + String.Format("{0:00000000}", (list.Count + 1));
                 Beneficiary.Beneficiaries = record.Beneficiaries;
                 Beneficiary.Decsription = record.Decsription;
                 Beneficiary.DonationSummary = record.DonationSummary;
@@ -45,14 +44,14 @@ namespace ENTPROG_FINALS.Controllers
 
             return RedirectToAction("Index");
         }
-        public IActionResult Edit(string? id)
+        public IActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return RedirectToAction("Index");
             }
 
-            var Beneficiary = _context.Beneficiaries.Where(i => i.BeneficiaryID.Equals(id)).SingleOrDefault();
+            var Beneficiary = _context.Beneficiaries.Where(i => i.BeneficiaryID == id).SingleOrDefault();
             if (Beneficiary == null)
             {
                 return RedirectToAction("Index");
@@ -61,9 +60,9 @@ namespace ENTPROG_FINALS.Controllers
             return View(Beneficiary);
         }
         [HttpPost]
-        public IActionResult Edit(string? id, Beneficiary record)
+        public IActionResult Edit(int? id, Beneficiary record)
         {
-            var Beneficiary = _context.Beneficiaries.Where(i => i.BeneficiaryID.Equals(id)).SingleOrDefault();
+            var Beneficiary = _context.Beneficiaries.Where(i => i.BeneficiaryID == id).SingleOrDefault();
             {
                 Beneficiary.Beneficiaries = record.Beneficiaries;
                 Beneficiary.Decsription = record.Decsription;
@@ -76,14 +75,14 @@ namespace ENTPROG_FINALS.Controllers
             }
         }
 
-        public IActionResult Delete(string? id)
+        public IActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return RedirectToAction("Index");
             }
 
-            var Beneficiary = _context.Beneficiaries.Where(i => i.BeneficiaryID.Equals(id)).SingleOrDefault();
+            var Beneficiary = _context.Beneficiaries.Where(i => i.BeneficiaryID == id).SingleOrDefault();
             if (Beneficiary == null)
             {
                 return RedirectToAction("Index");

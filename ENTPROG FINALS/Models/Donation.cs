@@ -10,7 +10,7 @@ namespace ENTPROG_FINALS.Models
     public class Donation
     {
         [Key]
-        public string DonationID { get; set; }
+        public int DonationID { get; set; }
 
         public string Role { get; set; }
 

@@ -21,8 +21,10 @@ namespace ENTPROG_FINALS.Migrations
 
             modelBuilder.Entity("ENTPROG_FINALS.Models.Beneficiary", b =>
                 {
-                    b.Property<string>("BeneficiaryID")
-                        .HasColumnType("nvarchar(450)");
+                    b.Property<int>("BeneficiaryID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<string>("Beneficiaries")
                         .IsRequired()
@@ -42,8 +44,10 @@ namespace ENTPROG_FINALS.Migrations
 
             modelBuilder.Entity("ENTPROG_FINALS.Models.Donation", b =>
                 {
-                    b.Property<string>("DonationID")
-                        .HasColumnType("nvarchar(450)");
+                    b.Property<int>("DonationID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<int>("Anonymous")
                         .HasColumnType("int");
@@ -74,8 +78,10 @@ namespace ENTPROG_FINALS.Migrations
 
             modelBuilder.Entity("ENTPROG_FINALS.Models.Transaction", b =>
                 {
-                    b.Property<string>("TransactionID")
-                        .HasColumnType("nvarchar(450)");
+                    b.Property<int>("TransactionID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<int>("Anonymous")
                         .HasColumnType("int");
@@ -137,8 +143,10 @@ namespace ENTPROG_FINALS.Migrations
                     b.Property<DateTimeOffset?>("LockoutEnd")
                         .HasColumnType("datetimeoffset");
 
-                    b.Property<string>("MemberID")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<int>("MemberID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<string>("NormalizedEmail")
                         .HasMaxLength(256)

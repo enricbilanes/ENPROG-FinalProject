@@ -33,8 +33,6 @@ namespace ENTPROG_FINALS.Controllers
         {
             var users = new User();
             {
-                var list = _context.Users.ToList();
-                users.MemberID = "MS" + String.Format("{0:00000000}", (list.Count + 1));
                 users.FirstName = record.FirstName;
                 users.LastName = record.LastName;
                 users.Email = record.Email;
@@ -48,7 +46,7 @@ namespace ENTPROG_FINALS.Controllers
             return RedirectToAction("List");
         }
 
-        public IActionResult Edit(string? id)
+        public IActionResult Edit(int? id)
         {
             if(id == null)
             {
@@ -65,7 +63,7 @@ namespace ENTPROG_FINALS.Controllers
         }
 
         [HttpPost]
-        public IActionResult Edit(string? id, User record)
+        public IActionResult Edit(int? id, User record)
         {
             var user = _context.Users.Where(i => i.MemberID == id).SingleOrDefault();
     
@@ -80,14 +78,14 @@ namespace ENTPROG_FINALS.Controllers
             return RedirectToAction("Index");
         }
 
-        public IActionResult Delete(string? id)
+        public IActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return RedirectToAction("Index");
             }
 
-            var user = _context.Users.Where(i => i.MemberID.Equals(id)).SingleOrDefault();
+            var user = _context.Users.Where(i => i.MemberID == id).SingleOrDefault();
             if (user == null)
             {
                 return RedirectToAction("Index");

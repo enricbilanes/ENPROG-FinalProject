@@ -10,7 +10,7 @@ namespace ENTPROG_FINALS.Models
     public class Beneficiary
     {
         [Key]
-        public string BeneficiaryID { get; set; }
+        public int BeneficiaryID { get; set; }
 
         [Required(ErrorMessage = "Required.")]
         public string Beneficiaries { get; set; }

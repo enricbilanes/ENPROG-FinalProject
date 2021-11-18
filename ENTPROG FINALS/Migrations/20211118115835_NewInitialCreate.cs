@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace ENTPROG_FINALS.Migrations
 {
-    public partial class IntitialCreate : Migration
+    public partial class NewInitialCreate : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -26,11 +26,13 @@ namespace ENTPROG_FINALS.Migrations
                 columns: table => new
                 {
                     Id = table.Column<string>(type: "nvarchar(450)", nullable: false),
-                    MemberID = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    MemberID = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
                     FirstName = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     LastName = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Email = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: false),
                     PassWord = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    RoleSetting = table.Column<int>(type: "int", nullable: false),
                     UserName = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
                     NormalizedUserName = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
                     NormalizedEmail = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
@@ -54,7 +56,8 @@ namespace ENTPROG_FINALS.Migrations
                 name: "Beneficiaries",
                 columns: table => new
                 {
-                    BeneficiaryID = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    BeneficiaryID = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
                     Beneficiaries = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Decsription = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     DonationSummary = table.Column<int>(type: "int", nullable: false)
@@ -68,9 +71,12 @@ namespace ENTPROG_FINALS.Migrations
                 name: "Donations",
                 columns: table => new
                 {
-                    DonationID = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    DonationID = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
                     Role = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    FirstName = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    LastName = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    UserId = table.Column<Guid>(type: "uniqueidentifier", nullable: true),
                     DonationAmount = table.Column<int>(type: "int", nullable: false),
                     Beneficiary = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Anonymous = table.Column<int>(type: "int", nullable: false)
@@ -84,7 +90,8 @@ namespace ENTPROG_FINALS.Migrations
                 name: "Transactions",
                 columns: table => new
                 {
-                    TransactionID = table.Column<string>(type: "nvarchar(450)", nullable: false),
+                    TransactionID = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
                     Table = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     RecordID = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Date = table.Column<DateTime>(type: "datetime2", nullable: false),

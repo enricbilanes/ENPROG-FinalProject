@@ -35,31 +35,39 @@
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.DonationID)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Role)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.FirstName) @Html.DisplayFor(modelItem => item.LastName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.DonationAmount)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Beneficiary)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Anonymous)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.DonationID" class="btn btn-warning btn-sm">Edit</a> |
-                <a asp-action="Delete" asp-route-id="@item.DonationID" class="btn btn-danger btn-sm" onclick='return confirm("Are you sure?");'>Delete</a>
-            </td>
-        </tr>
-}
+        @foreach (var item in Model)
+        {         
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DonationID)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Role)
+                </td>
+                <td>
+                    @if (item.Anonymous.ToString() == "Anonymous")
+                    {
+                    <text> N/A </text>
+                    }
+                    else
+                    {
+                    <text> @item.FirstName @item.LastName </text>
+                    }    
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DonationAmount)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Beneficiary)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Anonymous)
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.DonationID" class="btn btn-warning btn-sm">Edit</a> |
+                    <a asp-action="Delete" asp-route-id="@item.DonationID" class="btn btn-danger btn-sm" onclick='return confirm("Are you sure?");'>Delete</a>
+                </td>
+            </tr>
+        }
     </tbody>
 </table>

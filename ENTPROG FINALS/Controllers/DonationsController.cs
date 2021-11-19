@@ -42,7 +42,7 @@ namespace ENTPROG_FINALS.Controllers
                 donation.Role = user.RoleSetting.ToString();
                 donation.DonationAmount = record.DonationAmount;
                 donation.Beneficiary = record.Beneficiary;
-                donation.Anonymous = record.Anonymous;
+                donation.Anonymous = record.Anonymous;             
                 donation.FirstName = user.FirstName;
                 donation.LastName = user.LastName;
                 donation.UserId = Guid.Parse(userId);

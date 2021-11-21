@@ -10,7 +10,7 @@
 <p>
     <a asp-action="Create" class="btn btn-primary">Donate</a>
 </p>
-<table class="table">
+<table id="records" class="table">
     <thead>
         <tr>
             <th>
@@ -64,15 +64,21 @@
                     @Html.DisplayFor(modelItem => item.Anonymous)
                 </td>
                 <td>
-                    <a asp-action="Edit" asp-route-id="@item.DonationID" class="btn btn-warning btn-sm">Edit</a> |
-                    <a asp-action="Delete" asp-route-id="@item.DonationID" class="btn btn-danger btn-sm" onclick='return confirm("Are you sure?");'>Delete</a>
+                    <a class="btn btn-sm btn-warning" asp-action="Edit" asp-route-id="@item.DonationID"><i class="fa fa-edit"></i></a> |
+                    <a asp-action="Delete" asp-route-id="@item.DonationID" class="btn btn-sm btn-danger " onclick='return confirm("Are you sure?");'><i class="fa fa-remove"></i></a>
                 </td>
             </tr>
         }
     </tbody>
 </table>
 
-<<<<<<< HEAD
-=======
+@section Scripts{
+                <script src="~/lib/datatables/js/jquery.dataTables.js"></script>
+                <script src="~/lib/datatables/js/dataTables.bootstrap4.js"></script>
+                <script>
+                    $(document).ready(function () {
+                        $('#records').DataTable();
+                    });
 
->>>>>>> 1f2c666f278d3d856f2f77fcc0d0db3d9b5eea5f
+                </script>
+            }

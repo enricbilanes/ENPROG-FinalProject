@@ -91,7 +91,7 @@ namespace ENTPROG_FINALS.Areas.Identity.Pages.Account
                     NormalizedEmail = Input.Email,
                     PassWord = Input.Password,
                     RoleSetting = RoleType.User,
-                    
+
                     EmailConfirmed = true
                 };
                 var result = await _userManager.CreateAsync(user, Input.Password);

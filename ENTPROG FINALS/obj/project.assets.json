@@ -7498,19 +7498,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\cheet\\.nuget\\packages\\": {}
+    "C:\\Users\\keno-pc\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\cheet\\Source\\Repos\\ENPROG-FinalProject\\ENTPROG FINALS\\ENTPROG FINALS.csproj",
+      "projectUniqueName": "C:\\Users\\keno-pc\\source\\repos\\enricbilanes\\ENPROG-FinalProject\\ENTPROG FINALS\\ENTPROG FINALS.csproj",
       "projectName": "ENTPROG FINALS",
-      "projectPath": "C:\\Users\\cheet\\Source\\Repos\\ENPROG-FinalProject\\ENTPROG FINALS\\ENTPROG FINALS.csproj",
-      "packagesPath": "C:\\Users\\cheet\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\cheet\\Source\\Repos\\ENPROG-FinalProject\\ENTPROG FINALS\\obj\\",
+      "projectPath": "C:\\Users\\keno-pc\\source\\repos\\enricbilanes\\ENPROG-FinalProject\\ENTPROG FINALS\\ENTPROG FINALS.csproj",
+      "packagesPath": "C:\\Users\\keno-pc\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\keno-pc\\source\\repos\\enricbilanes\\ENPROG-FinalProject\\ENTPROG FINALS\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\cheet\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\keno-pc\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [

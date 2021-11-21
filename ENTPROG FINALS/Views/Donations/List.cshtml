@@ -10,7 +10,7 @@
 <p>
     <a asp-action="Create" class="btn btn-primary">Donate</a>
 </p>
-<table class="table">
+<table id="records" class="table">
     <thead>
         <tr>
             <th>
@@ -36,7 +36,7 @@
     </thead>
     <tbody>
         @foreach (var item in Model)
-        {         
+        {
             <tr>
                 <td>
                     @Html.DisplayFor(modelItem => item.DonationID)
@@ -47,12 +47,12 @@
                 <td>
                     @if (item.Anonymous.ToString() == "Anonymous")
                     {
-                    <text> N/A </text>
+                        <text> N/A </text>
                     }
                     else
                     {
-                    <text> @item.FirstName @item.LastName </text>
-                    }    
+                        <text> @item.FirstName @item.LastName </text>
+                    }
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.DonationAmount)
@@ -71,3 +71,15 @@
         }
     </tbody>
 </table>
+
+@section Scripts{
+
+    <script src="~lib.datatables/js/jquery.dataTables.js"></script>
+    <script src="~lib.datatables/js/dataTables.bootstrap4.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('#records').DataTable();
+        })
+
+    </script>
+}

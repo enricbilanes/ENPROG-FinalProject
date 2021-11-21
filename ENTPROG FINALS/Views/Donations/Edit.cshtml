@@ -1,7 +1,10 @@
 ﻿@model ENTPROG_FINALS.Models.Donation
+@inject ENTPROG_FINALS.Data.ApplicationDbContext _context;
 
 @{
     ViewData["Title"] = "Edit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var beneficiaryList = _context.Beneficiaries.ToList();
 }
 
 <h1>Edit</h1>
@@ -13,18 +16,6 @@
         <form asp-action="Edit">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <input type="hidden" asp-for="DonationID" />
-            <!--
-            <div class="form-group">
-                <label asp-for="Role" class="control-label"></label>
-                <input asp-for="Role" class="form-control" />
-                <span asp-validation-for="Role" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Name" class="control-label"></label>
-                <input asp-for="Name" class="form-control" />
-                <span asp-validation-for="Name" class="text-danger"></span>
-            </div>
-            -->
             <div class="form-group">
                 <label asp-for="DonationAmount" class="control-label"></label>
                 <input asp-for="DonationAmount" class="form-control" />
@@ -32,7 +23,9 @@
             </div>
             <div class="form-group">
                 <label asp-for="Beneficiary" class="control-label"></label>
-                <input asp-for="Beneficiary" class="form-control" />
+                <select asp-for="Beneficiary.BeneficiaryID" class="form-control" asp-items="@(new SelectList(beneficiaryList, "BeneficiaryID", "Beneficiaries" ))" required>
+                    <option value="">--Select Beneficiary--</option>
+                </select>
                 <span asp-validation-for="Beneficiary" class="text-danger"></span>
             </div>
             <div class="form-group">
@@ -48,7 +41,7 @@
 </div>
 
 <div>
-    <a asp-action="List"  class="btn btn-danger">Back to List</a>
+    <a asp-action="List" class="btn btn-danger">Back to List</a>
 </div>
 
 @section Scripts {

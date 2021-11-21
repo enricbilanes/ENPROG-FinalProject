@@ -22,7 +22,7 @@ namespace ENTPROG_FINALS.Controllers
 
         public IActionResult List()
         {
-            var list = _context.Donations.ToList();
+            var list = _context.Donations.Include(p => p.Beneficiary).ToList();
             return View(list);
         }
 
@@ -37,11 +37,13 @@ namespace ENTPROG_FINALS.Controllers
             var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
             var user = _context.Users.Where(u => u.Id == userId).SingleOrDefault();
 
+            var selectedBeneficiary = _context.Beneficiaries.Where(c => c.BeneficiaryID == record.Beneficiary.BeneficiaryID).SingleOrDefault();
+
             var donation = new Donation();
             {
                 donation.Role = user.RoleSetting.ToString();
                 donation.DonationAmount = record.DonationAmount;
-                donation.Beneficiary = record.Beneficiary;
+                donation.Beneficiary = selectedBeneficiary;
                 donation.Anonymous = record.Anonymous;             
                 donation.FirstName = user.FirstName;
                 donation.LastName = user.LastName;
@@ -72,11 +74,11 @@ namespace ENTPROG_FINALS.Controllers
         [HttpPost]
         public IActionResult Edit(int? id, Donation record)
         {
+            var selectedBeneficiary = _context.Beneficiaries.Where(c => c.BeneficiaryID == record.Beneficiary.BeneficiaryID).SingleOrDefault();
             var donation = _context.Donations.Where(i => i.DonationID == id).SingleOrDefault();
             {
-                //Should name be edited?
                 donation.DonationAmount = record.DonationAmount;
-                donation.Beneficiary = record.Beneficiary;
+                donation.Beneficiary = selectedBeneficiary;
                 donation.Anonymous = record.Anonymous;
             }
 
@@ -102,7 +104,7 @@ namespace ENTPROG_FINALS.Controllers
             _context.Donations.Remove(donation);
             _context.SaveChanges();
 
-            return RedirectToAction();
+            return RedirectToAction("List");
         }
 
 

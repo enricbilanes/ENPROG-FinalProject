@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
+using ENTPROG_FINALS.Models;
 using System.ComponentModel.DataAnnotations;
 
 namespace ENTPROG_FINALS.Models
@@ -24,7 +25,7 @@ namespace ENTPROG_FINALS.Models
         public int DonationAmount { get; set; }
 
         [Required(ErrorMessage = "Required.")]
-        public string Beneficiary { get; set; }
+        public virtual Beneficiary Beneficiary { get; set; }
 
         [Display(Name = "Anonymous")]
         public DonationType Anonymous { get; set; }
@@ -35,5 +36,7 @@ namespace ENTPROG_FINALS.Models
         Anonymous = 1,
         Visible = 2
     }
+
+
 }
 

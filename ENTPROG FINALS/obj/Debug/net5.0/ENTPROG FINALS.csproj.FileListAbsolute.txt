@@ -1,6 +1,6 @@
 C:\Users\keno-pc\source\repos\enricbilanes\ENPROG-FinalProject\ENTPROG FINALS\bin\Debug\net5.0\appsettings.Development.json
-C:\Users\keno-pc\source\repos\enricbilanes\ENPROG-FinalProject\ENTPROG FINALS\bin\Debug\net5.0\libman.json
 C:\Users\keno-pc\source\repos\enricbilanes\ENPROG-FinalProject\ENTPROG FINALS\bin\Debug\net5.0\appsettings.json
+C:\Users\keno-pc\source\repos\enricbilanes\ENPROG-FinalProject\ENTPROG FINALS\bin\Debug\net5.0\libman.json
 C:\Users\keno-pc\source\repos\enricbilanes\ENPROG-FinalProject\ENTPROG FINALS\bin\Debug\net5.0\ENTPROG FINALS.StaticWebAssets.xml
 C:\Users\keno-pc\source\repos\enricbilanes\ENPROG-FinalProject\ENTPROG FINALS\bin\Debug\net5.0\ENTPROG FINALS.exe
 C:\Users\keno-pc\source\repos\enricbilanes\ENPROG-FinalProject\ENTPROG FINALS\bin\Debug\net5.0\ENTPROG FINALS.deps.json

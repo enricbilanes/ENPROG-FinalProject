@@ -7,6 +7,9 @@ using ENTPROG_FINALS.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 
+using System.Net;
+using System.Net.Mail;
+
 namespace ENTPROG_FINALS.Controllers
 {
     public class HomeController : Controller
@@ -32,6 +35,40 @@ namespace ENTPROG_FINALS.Controllers
         public IActionResult Error()
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+        }
+
+        public IActionResult Contact()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public IActionResult Contact(Contact contact)
+        {
+            MailMessage mail = new MailMessage()
+            {
+                From = new MailAddress("testtrial239@gmail.com", "Administrator")
+            };
+            mail.To.Add(new MailAddress(contact.Email));
+
+            mail.Subject = "Inquiry from " + contact.Sender + " (" + contact.Subject + ")";
+            string message = "Hello, " + contact.Sender + "<br/><br/>" + "We have received your inquiry. Here are the details: <br/><br/>"
+                + "Contact Number: " + contact.ContactNo + "<br/>" + "Message:<br>" + contact.Message + "<br/><br/>"
+                + "Please wait for our reply. Thank you.";
+            mail.Body = message;
+            mail.IsBodyHtml = true;
+            //mail.Priority = MailPriority.High;
+
+
+            using SmtpClient smtp = new SmtpClient("smtp.gmail.com", 587)
+            {
+                Credentials = new NetworkCredential("testtrial239@gmail.com", "Minecraft158"),
+                EnableSsl = true
+            };
+
+            smtp.Send(mail);
+            ViewBag.Message = "Inquiry Sent.";
+            return View();
         }
     }
 }

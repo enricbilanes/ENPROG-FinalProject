@@ -7498,16 +7498,11 @@
     ]
   },
   "packageFolders": {
-<<<<<<< HEAD
     "C:\\Users\\keno-pc\\.nuget\\packages\\": {}
-=======
-    "C:\\Users\\me\\.nuget\\packages\\": {}
->>>>>>> 93631a805c7d295f1f55c1d5212779f6766250ac
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-<<<<<<< HEAD
       "projectUniqueName": "C:\\Users\\keno-pc\\source\\repos\\enricbilanes\\ENPROG-FinalProject\\ENTPROG FINALS\\ENTPROG FINALS.csproj",
       "projectName": "ENTPROG FINALS",
       "projectPath": "C:\\Users\\keno-pc\\source\\repos\\enricbilanes\\ENPROG-FinalProject\\ENTPROG FINALS\\ENTPROG FINALS.csproj",
@@ -7516,16 +7511,6 @@
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\keno-pc\\AppData\\Roaming\\NuGet\\NuGet.Config",
-=======
-      "projectUniqueName": "D:\\School Files\\ENTPROG\\GitHub Repo\\Final Project 3\\ENTPROG FINALS\\ENTPROG FINALS.csproj",
-      "projectName": "ENTPROG FINALS",
-      "projectPath": "D:\\School Files\\ENTPROG\\GitHub Repo\\Final Project 3\\ENTPROG FINALS\\ENTPROG FINALS.csproj",
-      "packagesPath": "C:\\Users\\me\\.nuget\\packages\\",
-      "outputPath": "D:\\School Files\\ENTPROG\\GitHub Repo\\Final Project 3\\ENTPROG FINALS\\obj\\",
-      "projectStyle": "PackageReference",
-      "configFilePaths": [
-        "C:\\Users\\me\\AppData\\Roaming\\NuGet\\NuGet.Config",
->>>>>>> 93631a805c7d295f1f55c1d5212779f6766250ac
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -7619,13 +7604,5 @@
         "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.403\\RuntimeIdentifierGraph.json"
       }
     }
-  },
-  "logs": [
-    {
-      "code": "Undefined",
-      "level": "Warning",
-      "warningLevel": 1,
-      "message": "Problem reading the cache file D:\\School Files\\ENTPROG\\GitHub Repo\\Final Project 3\\ENTPROG FINALS\\obj\\project.nuget.cache : Invalid property identifier character: <. Path 'version', line 3, position 0."
-    }
-  ]
+  }
 }

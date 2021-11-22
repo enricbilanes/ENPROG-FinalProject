@@ -1358,3 +1358,4 @@ C:\Users\keno-pc\source\repos\enricbilanes\ENPROG-FinalProject\ENTPROG FINALS\ob
 C:\Users\keno-pc\source\repos\enricbilanes\ENPROG-FinalProject\ENTPROG FINALS\obj\Debug\net5.0\Razor\Areas\Identity\Pages\Account\Register.cshtml.g.cs
 C:\Users\keno-pc\source\repos\enricbilanes\ENPROG-FinalProject\ENTPROG FINALS\bin\Debug\net5.0\libman.json
 C:\Users\keno-pc\source\repos\enricbilanes\ENPROG-FinalProject\ENTPROG FINALS\obj\Debug\net5.0\ENTPROG FINALS.csproj.AssemblyReference.cache
+C:\Users\keno-pc\source\repos\enricbilanes\ENPROG-FinalProject\ENTPROG FINALS\obj\Debug\net5.0\Razor\Views\Donations\Certificate.cshtml.g.cs

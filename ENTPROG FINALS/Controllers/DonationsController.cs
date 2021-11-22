@@ -20,6 +20,8 @@ namespace ENTPROG_FINALS.Controllers
             _context = context;
         }
 
+   
+
         public IActionResult List()
         {
             var list = _context.Donations.Include(p => p.Beneficiary).ToList();
@@ -63,7 +65,6 @@ namespace ENTPROG_FINALS.Controllers
             }
             _context.Transactions.Add(transacLog);
             _context.SaveChanges();
-
 
             return RedirectToAction("List");
         }

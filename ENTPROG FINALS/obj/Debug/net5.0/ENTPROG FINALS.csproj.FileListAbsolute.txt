@@ -1043,7 +1043,6 @@ C:\Users\cheet\source\repos\ENPROG-FinalProject\ENTPROG FINALS\obj\Debug\net5.0\
 C:\Users\cheet\source\repos\ENPROG-FinalProject\ENTPROG FINALS\obj\Debug\net5.0\Razor\Views\Shared\_LoginPartial.cshtml.g.cs
 C:\Users\cheet\source\repos\ENPROG-FinalProject\ENTPROG FINALS\obj\Debug\net5.0\Razor\Views\Shared\_ValidationScriptsPartial.cshtml.g.cs
 C:\Users\cheet\source\repos\ENPROG-FinalProject\ENTPROG FINALS\obj\Debug\net5.0\Razor\Views\TransactionLog\Index.cshtml.g.cs
-C:\Users\cheet\source\repos\ENPROG-FinalProject\ENTPROG FINALS\obj\Debug\net5.0\Razor\Views\User\Create.cshtml.g.cs
 C:\Users\cheet\source\repos\ENPROG-FinalProject\ENTPROG FINALS\obj\Debug\net5.0\Razor\Views\User\Edit.cshtml.g.cs
 C:\Users\cheet\source\repos\ENPROG-FinalProject\ENTPROG FINALS\obj\Debug\net5.0\Razor\Views\User\Index.cshtml.g.cs
 C:\Users\cheet\source\repos\ENPROG-FinalProject\ENTPROG FINALS\obj\Debug\net5.0\Razor\Views\_ViewImports.cshtml.g.cs
@@ -1359,6 +1358,7 @@ C:\Users\keno-pc\source\repos\enricbilanes\ENPROG-FinalProject\ENTPROG FINALS\ob
 C:\Users\keno-pc\source\repos\enricbilanes\ENPROG-FinalProject\ENTPROG FINALS\bin\Debug\net5.0\libman.json
 C:\Users\keno-pc\source\repos\enricbilanes\ENPROG-FinalProject\ENTPROG FINALS\obj\Debug\net5.0\ENTPROG FINALS.csproj.AssemblyReference.cache
 C:\Users\keno-pc\source\repos\enricbilanes\ENPROG-FinalProject\ENTPROG FINALS\obj\Debug\net5.0\Razor\Views\Donations\Certificate.cshtml.g.cs
+<<<<<<< HEAD
 D:\School Files\ENTPROG\GitHub Repo\Final Project 3\ENTPROG FINALS\bin\Debug\net5.0\appsettings.Development.json
 D:\School Files\ENTPROG\GitHub Repo\Final Project 3\ENTPROG FINALS\bin\Debug\net5.0\appsettings.json
 D:\School Files\ENTPROG\GitHub Repo\Final Project 3\ENTPROG FINALS\bin\Debug\net5.0\libman.json
@@ -1535,3 +1535,9 @@ D:\School Files\ENTPROG\GitHub Repo\Final Project 3\ENTPROG FINALS\obj\Debug\net
 D:\School Files\ENTPROG\GitHub Repo\Final Project 3\ENTPROG FINALS\obj\Debug\net5.0\ref\ENTPROG FINALS.dll
 D:\School Files\ENTPROG\GitHub Repo\Final Project 3\ENTPROG FINALS\obj\Debug\net5.0\ENTPROG FINALS.pdb
 D:\School Files\ENTPROG\GitHub Repo\Final Project 3\ENTPROG FINALS\obj\Debug\net5.0\ENTPROG FINALS.genruntimeconfig.cache
+=======
+C:\Users\cheet\Source\Repos\ENPROG-FinalProject\ENTPROG FINALS\bin\Debug\net5.0\libman.json
+C:\Users\cheet\Source\Repos\ENPROG-FinalProject\ENTPROG FINALS\obj\Debug\net5.0\Razor\Views\Donations\Certificate.cshtml.g.cs
+C:\Users\cheet\Source\Repos\ENPROG-FinalProject\ENTPROG FINALS\obj\Debug\net5.0\Razor\Views\Home\Contact.cshtml.g.cs
+>>>>>>> 7f475bf9f4ca2b9e9a1a8621b7588914beed80a3
+D:\School Files\ENTPROG\GitHub Repo\Final Project 3\ENTPROG FINALS\obj\Debug\net5.0\Razor\Views\Home\Contact.cshtml.g.cs

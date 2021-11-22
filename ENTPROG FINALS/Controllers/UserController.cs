@@ -6,6 +6,8 @@ using Microsoft.AspNetCore.Mvc;
 
 using ENTPROG_FINALS.Data;
 using ENTPROG_FINALS.Models;
+using System.Security.Claims;
+using Microsoft.EntityFrameworkCore;
 
 namespace ENTPROG_FINALS.Controllers
 {
@@ -23,29 +25,6 @@ namespace ENTPROG_FINALS.Controllers
             return View(users);
         }
 
-        public IActionResult Create()
-        {
-            return View();
-        }
-
-        [HttpPost]
-        public IActionResult Create(User record)
-        {
-            var users = new User();
-            {
-                users.FirstName = record.FirstName;
-                users.LastName = record.LastName;
-                users.Email = record.Email;
-                users.PassWord = record.PassWord;
-                users.RoleSetting = RoleType.User;
-            }
-
-            _context.Users.Add(users);
-            _context.SaveChanges();
-
-            return RedirectToAction("List");
-        }
-
         public IActionResult Edit(int? id)
         {
             if(id == null)
@@ -61,18 +40,31 @@ namespace ENTPROG_FINALS.Controllers
 
             return View(user);
         }
-
         [HttpPost]
         public IActionResult Edit(int? id, User record)
         {
             var user = _context.Users.Where(i => i.MemberID == id).SingleOrDefault();
-    
-            user.FirstName = record.FirstName;
-            user.LastName = record.LastName;
-            user.Email = record.Email;
-            user.PassWord = record.PassWord;
-
+            {
+                user.FirstName = record.FirstName;
+                user.LastName = record.LastName;
+                user.Email = record.Email;
+                user.PassWord = record.PassWord;
+            }
             _context.Users.Update(user);
+
+            //Transaction Log
+            var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            var currentUser = _context.Users.Where(u => u.Id == userId).SingleOrDefault();
+            var transacLog = new Transaction();
+            {
+                transacLog.Table = "Members";
+                transacLog.RecordID = user.MemberID;
+                transacLog.Date = DateTime.Now;
+                transacLog.User = currentUser.FirstName + currentUser.LastName;
+                transacLog.TransactionMade = "UPDATE";
+                transacLog.Anonymous = DonationType.Visible;
+            }
+            _context.Transactions.Add(transacLog);
             _context.SaveChanges();
 
             return RedirectToAction("Index");
@@ -90,6 +82,20 @@ namespace ENTPROG_FINALS.Controllers
             {
                 return RedirectToAction("Index");
             }
+
+            //Transaction Log
+            var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            var currentUser = _context.Users.Where(u => u.Id == userId).SingleOrDefault();
+            var transacLog = new Transaction();
+            {
+                transacLog.Table = "Members";
+                transacLog.RecordID = user.MemberID;
+                transacLog.Date = DateTime.Now;
+                transacLog.User = currentUser.FirstName + currentUser.LastName;
+                transacLog.TransactionMade = "DELETE";
+                transacLog.Anonymous = DonationType.Visible;
+            }
+            _context.Transactions.Add(transacLog);
 
             _context.Users.Remove(user);
             _context.SaveChanges();

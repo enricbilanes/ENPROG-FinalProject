@@ -15,6 +15,10 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.WebUtilities;
 using Microsoft.Extensions.Logging;
 
+using System.Security.Claims;
+using Microsoft.EntityFrameworkCore;
+using ENTPROG_FINALS.Data;
+
 namespace ENTPROG_FINALS.Areas.Identity.Pages.Account
 {
     [AllowAnonymous]
@@ -25,16 +29,22 @@ namespace ENTPROG_FINALS.Areas.Identity.Pages.Account
         private readonly ILogger<RegisterModel> _logger;
         private readonly IEmailSender _emailSender;
 
+        ApplicationDbContext _context;
+
         public RegisterModel(
             UserManager<User> userManager,
             SignInManager<User> signInManager,
             ILogger<RegisterModel> logger,
-            IEmailSender emailSender)
+            IEmailSender emailSender,
+
+            ApplicationDbContext context)
         {
             _userManager = userManager;
             _signInManager = signInManager;
             _logger = logger;
             _emailSender = emailSender;
+
+            _context = context;
         }
 
         [BindProperty]
@@ -94,6 +104,7 @@ namespace ENTPROG_FINALS.Areas.Identity.Pages.Account
 
                     EmailConfirmed = true
                 };
+
                 var result = await _userManager.CreateAsync(user, Input.Password);
                 if (result.Succeeded)
                 {
@@ -110,6 +121,19 @@ namespace ENTPROG_FINALS.Areas.Identity.Pages.Account
                     await _emailSender.SendEmailAsync(Input.Email, "Confirm your email",
                         $"Please confirm your account by <a href='{HtmlEncoder.Default.Encode(callbackUrl)}'>clicking here</a>.");
 
+                    //Transaction Log
+                    var transacLog = new Transaction();
+                    {
+                        transacLog.Table = "Members";
+                        transacLog.RecordID = user.MemberID;
+                        transacLog.Date = DateTime.Now;
+                        transacLog.User = "New User";
+                        transacLog.TransactionMade = "CREATE";
+                        transacLog.Anonymous = DonationType.Visible;
+                    }
+                    _context.Transactions.Add(transacLog);
+                    _context.SaveChanges();
+
                     if (_userManager.Options.SignIn.RequireConfirmedAccount)
                     {
                         return RedirectToPage("RegisterConfirmation", new { email = Input.Email, returnUrl = returnUrl });
@@ -119,6 +143,7 @@ namespace ENTPROG_FINALS.Areas.Identity.Pages.Account
                         await _signInManager.SignInAsync(user, isPersistent: false);
                         return LocalRedirect(returnUrl);
                     }
+
                 }
                 foreach (var error in result.Errors)
                 {

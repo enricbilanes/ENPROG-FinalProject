@@ -15,7 +15,7 @@ namespace ENTPROG_FINALS.Models
         public string Table { get; set; }
 
         [Required(ErrorMessage = "Required.")]
-        public string RecordID { get; set; }
+        public int RecordID { get; set; }
 
         [Required(ErrorMessage = "Required.")]
         public DateTime Date { get; set; }

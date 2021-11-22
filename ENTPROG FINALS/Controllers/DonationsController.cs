@@ -49,9 +49,21 @@ namespace ENTPROG_FINALS.Controllers
                 donation.LastName = user.LastName;
                 donation.UserId = Guid.Parse(userId);
             }
+             _context.Donations.Add(donation);
 
-            _context.Donations.Add(donation);
+            //Transaction Log
+            var transacLog = new Transaction();
+            {
+                transacLog.Table = "Donations";
+                transacLog.RecordID = donation.DonationID;
+                transacLog.Date = DateTime.Now;
+                transacLog.User = user.FirstName + user.LastName;
+                transacLog.TransactionMade = "CREATE";
+                transacLog.Anonymous = donation.Anonymous;
+            }
+            _context.Transactions.Add(transacLog);
             _context.SaveChanges();
+
 
             return RedirectToAction("List");
         }
@@ -83,6 +95,20 @@ namespace ENTPROG_FINALS.Controllers
             }
 
             _context.Donations.Update(donation);
+
+            //Transaction Log
+            var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            var user = _context.Users.Where(u => u.Id == userId).SingleOrDefault();
+            var transacLog = new Transaction();
+            {
+                transacLog.Table = "Donations";
+                transacLog.RecordID = donation.DonationID;
+                transacLog.Date = DateTime.Now;
+                transacLog.User = user.FirstName + user.LastName;
+                transacLog.TransactionMade = "UPDATE";
+                transacLog.Anonymous = donation.Anonymous;
+            }
+            _context.Transactions.Add(transacLog);
             _context.SaveChanges();
 
             return RedirectToAction("List");
@@ -102,6 +128,20 @@ namespace ENTPROG_FINALS.Controllers
             }
 
             _context.Donations.Remove(donation);
+
+            //Transaction Log
+            var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            var user = _context.Users.Where(u => u.Id == userId).SingleOrDefault();
+            var transacLog = new Transaction();
+            {
+                transacLog.Table = "Donations";
+                transacLog.RecordID = donation.DonationID;
+                transacLog.Date = DateTime.Now;
+                transacLog.User = user.FirstName + user.LastName;
+                transacLog.TransactionMade = "DELETE";
+                transacLog.Anonymous = donation.Anonymous;
+            }
+            _context.Transactions.Add(transacLog);
             _context.SaveChanges();
 
             return RedirectToAction("List");

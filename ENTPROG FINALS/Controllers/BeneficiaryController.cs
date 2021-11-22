@@ -6,6 +6,8 @@ using System.Threading.Tasks;
 
 using ENTPROG_FINALS.Data;
 using ENTPROG_FINALS.Models;
+using System.Security.Claims;
+using Microsoft.EntityFrameworkCore;
 
 namespace ENTPROG_FINALS.Controllers
 {
@@ -37,9 +39,23 @@ namespace ENTPROG_FINALS.Controllers
                 var list = _context.Beneficiaries.ToList();
                 Beneficiary.Beneficiaries = record.Beneficiaries;
                 Beneficiary.Decsription = record.Decsription;
-                Beneficiary.DonationSummary = record.DonationSummary;
+                Beneficiary.DonationSummary = 0;
             };
             _context.Beneficiaries.Add(Beneficiary);
+
+            //Transaction Log
+            var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            var user = _context.Users.Where(u => u.Id == userId).SingleOrDefault();
+            var transacLog = new Transaction();
+            {
+                transacLog.Table = "Beneficiary";
+                transacLog.RecordID = Beneficiary.BeneficiaryID;
+                transacLog.Date = DateTime.Now;
+                transacLog.User = user.FirstName + user.LastName;
+                transacLog.TransactionMade = "CREATE";
+                transacLog.Anonymous = DonationType.Visible;
+            }
+            _context.Transactions.Add(transacLog);
             _context.SaveChanges();
 
             return RedirectToAction("Index");
@@ -67,12 +83,25 @@ namespace ENTPROG_FINALS.Controllers
                 Beneficiary.Beneficiaries = record.Beneficiaries;
                 Beneficiary.Decsription = record.Decsription;
                 Beneficiary.DonationSummary = record.DonationSummary;
-
-                _context.Beneficiaries.Update(Beneficiary);
-                _context.SaveChanges();
-
-                return RedirectToAction("Index");
             }
+            _context.Beneficiaries.Update(Beneficiary);
+
+            //Transaction Log
+            var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            var user = _context.Users.Where(u => u.Id == userId).SingleOrDefault();
+            var transacLog = new Transaction();
+            {
+                transacLog.Table = "Beneficiary";
+                transacLog.RecordID = Beneficiary.BeneficiaryID;
+                transacLog.Date = DateTime.Now;
+                transacLog.User = user.FirstName + user.LastName;
+                transacLog.TransactionMade = "UPDATE";
+                transacLog.Anonymous = DonationType.Visible;
+            }
+            _context.Transactions.Add(transacLog);
+            _context.SaveChanges();
+
+            return RedirectToAction("Index");
         }
 
         public IActionResult Delete(int? id)
@@ -87,6 +116,20 @@ namespace ENTPROG_FINALS.Controllers
             {
                 return RedirectToAction("Index");
             }
+
+            //Transaction Log
+            var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            var user = _context.Users.Where(u => u.Id == userId).SingleOrDefault();
+            var transacLog = new Transaction();
+            {
+                transacLog.Table = "Beneficiary";
+                transacLog.RecordID = Beneficiary.BeneficiaryID;
+                transacLog.Date = DateTime.Now;
+                transacLog.User = user.FirstName + user.LastName;
+                transacLog.TransactionMade = "DELETE";
+                transacLog.Anonymous = DonationType.Visible;
+            }
+            _context.Transactions.Add(transacLog);
 
             _context.Beneficiaries.Remove(Beneficiary);
             _context.SaveChanges();

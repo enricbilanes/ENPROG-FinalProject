@@ -1341,7 +1341,6 @@ C:\Users\keno-pc\source\repos\enricbilanes\ENPROG-FinalProject\ENTPROG FINALS\ob
 C:\Users\keno-pc\source\repos\enricbilanes\ENPROG-FinalProject\ENTPROG FINALS\obj\Debug\net5.0\Razor\Views\Shared\_LoginPartial.cshtml.g.cs
 C:\Users\keno-pc\source\repos\enricbilanes\ENPROG-FinalProject\ENTPROG FINALS\obj\Debug\net5.0\Razor\Views\Shared\_ValidationScriptsPartial.cshtml.g.cs
 C:\Users\keno-pc\source\repos\enricbilanes\ENPROG-FinalProject\ENTPROG FINALS\obj\Debug\net5.0\Razor\Views\TransactionLog\Index.cshtml.g.cs
-C:\Users\keno-pc\source\repos\enricbilanes\ENPROG-FinalProject\ENTPROG FINALS\obj\Debug\net5.0\Razor\Views\User\Create.cshtml.g.cs
 C:\Users\keno-pc\source\repos\enricbilanes\ENPROG-FinalProject\ENTPROG FINALS\obj\Debug\net5.0\Razor\Views\User\Edit.cshtml.g.cs
 C:\Users\keno-pc\source\repos\enricbilanes\ENPROG-FinalProject\ENTPROG FINALS\obj\Debug\net5.0\Razor\Views\User\Index.cshtml.g.cs
 C:\Users\keno-pc\source\repos\enricbilanes\ENPROG-FinalProject\ENTPROG FINALS\obj\Debug\net5.0\Razor\Views\_ViewImports.cshtml.g.cs
@@ -1358,3 +1357,4 @@ C:\Users\keno-pc\source\repos\enricbilanes\ENPROG-FinalProject\ENTPROG FINALS\ob
 C:\Users\keno-pc\source\repos\enricbilanes\ENPROG-FinalProject\ENTPROG FINALS\obj\Debug\net5.0\Razor\Views\Donations\Create.cshtml.g.cs
 C:\Users\keno-pc\source\repos\enricbilanes\ENPROG-FinalProject\ENTPROG FINALS\obj\Debug\net5.0\Razor\Areas\Identity\Pages\Account\Register.cshtml.g.cs
 C:\Users\keno-pc\source\repos\enricbilanes\ENPROG-FinalProject\ENTPROG FINALS\bin\Debug\net5.0\libman.json
+C:\Users\keno-pc\source\repos\enricbilanes\ENPROG-FinalProject\ENTPROG FINALS\obj\Debug\net5.0\ENTPROG FINALS.csproj.AssemblyReference.cache

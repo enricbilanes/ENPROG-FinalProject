@@ -1,7 +1,10 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\ENTPROG FINALS",
+    "\\ENTPROG FINALS\\Views",
+    "\\ENTPROG FINALS\\Views\\Beneficiary",
+    "\\ENTPROG FINALS\\Views\\Donations"
   ],
-  "SelectedNode": "\\ENTPROG FINALS.sln",
   "PreviewInSolutionExplorer": false
 }

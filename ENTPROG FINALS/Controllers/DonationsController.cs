@@ -20,8 +20,6 @@ namespace ENTPROG_FINALS.Controllers
             _context = context;
         }
 
-   
-
         public IActionResult List()
         {
             var list = _context.Donations.Include(p => p.Beneficiary).ToList();
@@ -147,7 +145,22 @@ namespace ENTPROG_FINALS.Controllers
 
             return RedirectToAction("List");
         }
+        public IActionResult Certificate(int? id)
+        {
+            if (id == null)
+            {
+                return RedirectToAction("List");
+            }
 
+            var donation = _context.Donations.Where(i => i.DonationID == id).SingleOrDefault();
+            if (donation == null)
+            {
+                return RedirectToAction("List");
+            }
+
+            return View(donation);
+        }
+        /*
         [HttpPost]
         public IActionResult Certificate(int? id, Donation record)
         {
@@ -178,7 +191,7 @@ namespace ENTPROG_FINALS.Controllers
 
             return RedirectToAction("List");
         }
-
+        */
 
     }
 }

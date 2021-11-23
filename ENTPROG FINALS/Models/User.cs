@@ -11,8 +11,6 @@ namespace ENTPROG_FINALS.Models
 {
     public class User : IdentityUser
     {
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public int MemberID { get; set; }
 
         [Required(ErrorMessage = "Required.")]
         public string FirstName { get; set; }

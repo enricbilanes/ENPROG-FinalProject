@@ -49,7 +49,7 @@ namespace ENTPROG_FINALS.Controllers
             var transacLog = new Transaction();
             {
                 transacLog.Table = "Beneficiary";
-                transacLog.RecordID = Beneficiary.BeneficiaryID;
+                transacLog.RecordID = Beneficiary.BeneficiaryID.ToString();
                 transacLog.Date = DateTime.Now;
                 transacLog.User = user.FirstName + user.LastName;
                 transacLog.TransactionMade = "CREATE";
@@ -92,7 +92,7 @@ namespace ENTPROG_FINALS.Controllers
             var transacLog = new Transaction();
             {
                 transacLog.Table = "Beneficiary";
-                transacLog.RecordID = Beneficiary.BeneficiaryID;
+                transacLog.RecordID = Beneficiary.BeneficiaryID.ToString();
                 transacLog.Date = DateTime.Now;
                 transacLog.User = user.FirstName + user.LastName;
                 transacLog.TransactionMade = "UPDATE";
@@ -123,7 +123,7 @@ namespace ENTPROG_FINALS.Controllers
             var transacLog = new Transaction();
             {
                 transacLog.Table = "Beneficiary";
-                transacLog.RecordID = Beneficiary.BeneficiaryID;
+                transacLog.RecordID = Beneficiary.BeneficiaryID.ToString();
                 transacLog.Date = DateTime.Now;
                 transacLog.User = user.FirstName + user.LastName;
                 transacLog.TransactionMade = "DELETE";

@@ -41,14 +41,14 @@ namespace ENTPROG_FINALS.Controllers
             return View(users);
         }
 
-        public IActionResult Edit(int? id)
+        public IActionResult Edit(Guid? id)
         {
             if(id == null)
             {
                 return RedirectToAction("Index");
             }
 
-            var user = _context.Users.Where(i => i.MemberID == id).SingleOrDefault();
+            var user = _context.Users.Where(i => i.Id == id.ToString()).SingleOrDefault();
             if (user == null)
             {
                 return RedirectToAction("Index");
@@ -57,9 +57,9 @@ namespace ENTPROG_FINALS.Controllers
             return View(user);
         }
         [HttpPost]
-        public IActionResult Edit(int? id, User record)
+        public IActionResult Edit(Guid? id, User record)
         {
-            var user = _context.Users.Where(i => i.MemberID == id).SingleOrDefault();
+            var user = _context.Users.Where(i => i.Id == id.ToString()).SingleOrDefault();
             {
                 user.FirstName = record.FirstName;
                 user.LastName = record.LastName;
@@ -68,32 +68,34 @@ namespace ENTPROG_FINALS.Controllers
             }
             _context.Users.Update(user);
 
+            
             //Transaction Log
             var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
             var currentUser = _context.Users.Where(u => u.Id == userId).SingleOrDefault();
             var transacLog = new Transaction();
             {
                 transacLog.Table = "Members";
-                transacLog.RecordID = user.MemberID;
+                transacLog.RecordID = user.Email;
                 transacLog.Date = DateTime.Now;
                 transacLog.User = currentUser.FirstName + currentUser.LastName;
                 transacLog.TransactionMade = "UPDATE";
                 transacLog.Anonymous = DonationType.Visible;
             }
             _context.Transactions.Add(transacLog);
+            
             _context.SaveChanges();
 
             return RedirectToAction("Index");
         }
 
-        public IActionResult Delete(int? id)
+        public IActionResult Delete(Guid? id)
         {
             if (id == null)
             {
                 return RedirectToAction("Index");
             }
 
-            var user = _context.Users.Where(i => i.MemberID == id).SingleOrDefault();
+            var user = _context.Users.Where(i => i.Id == id.ToString()).SingleOrDefault();
             if (user == null)
             {
                 return RedirectToAction("Index");
@@ -105,7 +107,7 @@ namespace ENTPROG_FINALS.Controllers
             var transacLog = new Transaction();
             {
                 transacLog.Table = "Members";
-                transacLog.RecordID = user.MemberID;
+                transacLog.RecordID = user.Email;
                 transacLog.Date = DateTime.Now;
                 transacLog.User = currentUser.FirstName + currentUser.LastName;
                 transacLog.TransactionMade = "DELETE";

@@ -42,6 +42,7 @@ namespace ENTPROG_FINALS.Controllers
                 Beneficiary.DonationSummary = 0;
             };
             _context.Beneficiaries.Add(Beneficiary);
+            _context.SaveChanges();
 
             //Transaction Log
             var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
@@ -85,6 +86,7 @@ namespace ENTPROG_FINALS.Controllers
                 Beneficiary.DonationSummary = record.DonationSummary;
             }
             _context.Beneficiaries.Update(Beneficiary);
+            _context.SaveChanges();
 
             //Transaction Log
             var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
@@ -130,6 +132,7 @@ namespace ENTPROG_FINALS.Controllers
                 transacLog.Anonymous = DonationType.Visible;
             }
             _context.Transactions.Add(transacLog);
+            _context.SaveChanges();
 
             _context.Beneficiaries.Remove(Beneficiary);
             _context.SaveChanges();

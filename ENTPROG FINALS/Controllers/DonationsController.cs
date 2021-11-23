@@ -128,8 +128,7 @@ namespace ENTPROG_FINALS.Controllers
                 return RedirectToAction("List");
             }
 
-            _context.Donations.Remove(donation);
-            _context.SaveChanges();
+
 
             //Transaction Log
             var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
@@ -144,6 +143,9 @@ namespace ENTPROG_FINALS.Controllers
                 transacLog.Anonymous = donation.Anonymous;
             }
             _context.Transactions.Add(transacLog);
+            _context.SaveChanges();
+
+            _context.Donations.Remove(donation);
             _context.SaveChanges();
 
             return RedirectToAction("List");

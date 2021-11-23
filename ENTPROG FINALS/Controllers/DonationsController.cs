@@ -50,6 +50,7 @@ namespace ENTPROG_FINALS.Controllers
                 donation.UserId = Guid.Parse(userId);
             }
              _context.Donations.Add(donation);
+            _context.SaveChanges();
 
             //Transaction Log
             var transacLog = new Transaction();

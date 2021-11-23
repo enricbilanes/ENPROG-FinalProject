@@ -148,6 +148,37 @@ namespace ENTPROG_FINALS.Controllers
             return RedirectToAction("List");
         }
 
+        [HttpPost]
+        public IActionResult Certificate(int? id, Donation record)
+        {
+            var selectedBeneficiary = _context.Beneficiaries.Where(c => c.BeneficiaryID == record.Beneficiary.BeneficiaryID).SingleOrDefault();
+            var donation = _context.Donations.Where(i => i.DonationID == id).SingleOrDefault();
+            {
+                donation.FirstName = record.FirstName;
+                donation.DonationAmount = record.DonationAmount;
+                donation.Beneficiary = selectedBeneficiary;
+            }
+
+            _context.Donations.Update(donation);
+
+            //Transaction Log
+            var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            var user = _context.Users.Where(u => u.Id == userId).SingleOrDefault();
+            var transacLog = new Transaction();
+            {
+                transacLog.Table = "Donations";
+                transacLog.RecordID = donation.DonationID.ToString();
+                transacLog.Date = DateTime.Now;
+                transacLog.User = user.FirstName + user.LastName;
+                transacLog.TransactionMade = "UPDATE";
+                transacLog.Anonymous = donation.Anonymous;
+            }
+            _context.Transactions.Add(transacLog);
+            _context.SaveChanges();
+
+            return RedirectToAction("List");
+        }
+
 
     }
 }

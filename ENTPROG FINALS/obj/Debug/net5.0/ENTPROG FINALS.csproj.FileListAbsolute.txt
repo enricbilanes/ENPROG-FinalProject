@@ -325,7 +325,6 @@ D:\School Files\ENTPROG\GitHub Repo\Final Project 3\ENTPROG FINALS\obj\Debug\net
 D:\School Files\ENTPROG\GitHub Repo\Final Project 3\ENTPROG FINALS\obj\Debug\net5.0\Razor\Views\Beneficiary\Create.cshtml.g.cs
 D:\School Files\ENTPROG\GitHub Repo\Final Project 3\ENTPROG FINALS\obj\Debug\net5.0\Razor\Views\Beneficiary\Edit.cshtml.g.cs
 D:\School Files\ENTPROG\GitHub Repo\Final Project 3\ENTPROG FINALS\obj\Debug\net5.0\Razor\Views\Beneficiary\Index.cshtml.g.cs
-D:\School Files\ENTPROG\GitHub Repo\Final Project 3\ENTPROG FINALS\obj\Debug\net5.0\Razor\Views\Donations\Certificate.cshtml.g.cs
 D:\School Files\ENTPROG\GitHub Repo\Final Project 3\ENTPROG FINALS\obj\Debug\net5.0\Razor\Views\Donations\Create.cshtml.g.cs
 D:\School Files\ENTPROG\GitHub Repo\Final Project 3\ENTPROG FINALS\obj\Debug\net5.0\Razor\Views\Donations\Edit.cshtml.g.cs
 D:\School Files\ENTPROG\GitHub Repo\Final Project 3\ENTPROG FINALS\obj\Debug\net5.0\Razor\Views\Donations\List.cshtml.g.cs
@@ -350,3 +349,4 @@ D:\School Files\ENTPROG\GitHub Repo\Final Project 3\ENTPROG FINALS\obj\Debug\net
 D:\School Files\ENTPROG\GitHub Repo\Final Project 3\ENTPROG FINALS\obj\Debug\net5.0\ENTPROG FINALS.genruntimeconfig.cache
 D:\School Files\ENTPROG\GitHub Repo\Final Project 3\ENTPROG FINALS\obj\Debug\net5.0\ENTPROG FINALS.csproj.CopyComplete
 D:\School Files\ENTPROG\GitHub Repo\Final Project 3\ENTPROG FINALS\obj\Debug\net5.0\ENTPROG FINALS.csproj.AssemblyReference.cache
+D:\School Files\ENTPROG\GitHub Repo\Final Project 3\ENTPROG FINALS\obj\Debug\net5.0\Razor\Views\Donations\Certificate.cshtml.g.cs

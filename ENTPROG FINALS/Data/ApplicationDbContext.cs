@@ -18,7 +18,7 @@ namespace ENTPROG_FINALS.Data
         public DbSet<Donation> Donations { get; set; }
         public DbSet<Transaction> Transactions { get; set; }
         public DbSet<Beneficiary> Beneficiaries { get; set; }
-        public DbSet<ENTPROG_FINALS.Models.Contact> Contact { get; set; }
+        public DbSet<Contact> Contact { get; set; }
 
     }
 }

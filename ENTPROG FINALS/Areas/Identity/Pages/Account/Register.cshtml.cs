@@ -125,7 +125,7 @@ namespace ENTPROG_FINALS.Areas.Identity.Pages.Account
                     var transacLog = new Transaction();
                     {
                         transacLog.Table = "Members";
-                        transacLog.RecordID = user.MemberID;
+                        transacLog.RecordID = user.Email;
                         transacLog.Date = DateTime.Now;
                         transacLog.User = "New User";
                         transacLog.TransactionMade = "CREATE";

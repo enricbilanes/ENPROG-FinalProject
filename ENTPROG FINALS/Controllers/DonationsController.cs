@@ -49,7 +49,14 @@ namespace ENTPROG_FINALS.Controllers
                 donation.LastName = user.LastName;
                 donation.UserId = Guid.Parse(userId);
             }
-             _context.Donations.Add(donation);
+            _context.Donations.Add(donation);
+            _context.SaveChanges();
+
+            var beneficiary = selectedBeneficiary;
+            {
+                beneficiary.DonationSummary += donation.DonationAmount;
+            }
+            _context.Beneficiaries.Update(beneficiary);
             _context.SaveChanges();
 
             //Transaction Log
@@ -88,13 +95,22 @@ namespace ENTPROG_FINALS.Controllers
         {
             var selectedBeneficiary = _context.Beneficiaries.Where(c => c.BeneficiaryID == record.Beneficiary.BeneficiaryID).SingleOrDefault();
             var donation = _context.Donations.Where(i => i.DonationID == id).SingleOrDefault();
-            {
-                donation.DonationAmount = record.DonationAmount;
-                donation.Beneficiary = selectedBeneficiary;
-                donation.Anonymous = record.Anonymous;
-            }
 
+            var beneficiary = _context.Beneficiaries.Where(b => b.BeneficiaryID == donation.Beneficiary.BeneficiaryID).SingleOrDefault();
+            {
+                beneficiary.DonationSummary -= donation.DonationAmount;
+            }
+            _context.Beneficiaries.Update(beneficiary);
+            _context.SaveChanges();
+
+            donation.DonationAmount = record.DonationAmount;
+            donation.Beneficiary = selectedBeneficiary;
+            donation.Anonymous = record.Anonymous;
             _context.Donations.Update(donation);
+            _context.SaveChanges();
+
+            selectedBeneficiary.DonationSummary += donation.DonationAmount;
+            _context.Beneficiaries.Update(selectedBeneficiary);
             _context.SaveChanges();
 
             //Transaction Log
@@ -128,7 +144,12 @@ namespace ENTPROG_FINALS.Controllers
                 return RedirectToAction("List");
             }
 
-
+            var beneficiary = _context.Beneficiaries.Where(i => i.BeneficiaryID == donation.Beneficiary.BeneficiaryID).SingleOrDefault();
+            {
+                beneficiary.DonationSummary -= donation.DonationAmount;
+            }
+            _context.Beneficiaries.Update(beneficiary);
+            _context.SaveChanges();
 
             //Transaction Log
             var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);

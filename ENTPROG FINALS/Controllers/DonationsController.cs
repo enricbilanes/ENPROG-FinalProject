@@ -144,7 +144,7 @@ namespace ENTPROG_FINALS.Controllers
                 return RedirectToAction("List");
             }
 
-            var beneficiary = _context.Beneficiaries.Where(i => i.BeneficiaryID == donation.Beneficiary.BeneficiaryID).SingleOrDefault();
+            var beneficiary = _context.Beneficiaries.Where(b => b.BeneficiaryID == donation.Beneficiary.BeneficiaryID).SingleOrDefault();
             {
                 beneficiary.DonationSummary -= donation.DonationAmount;
             }

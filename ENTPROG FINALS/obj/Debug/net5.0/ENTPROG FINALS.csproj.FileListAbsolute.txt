@@ -350,7 +350,6 @@ D:\School Files\ENTPROG\GitHub Repo\Final Project 3\ENTPROG FINALS\obj\Debug\net
 D:\School Files\ENTPROG\GitHub Repo\Final Project 3\ENTPROG FINALS\obj\Debug\net5.0\ENTPROG FINALS.csproj.CopyComplete
 D:\School Files\ENTPROG\GitHub Repo\Final Project 3\ENTPROG FINALS\obj\Debug\net5.0\ENTPROG FINALS.csproj.AssemblyReference.cache
 D:\School Files\ENTPROG\GitHub Repo\Final Project 3\ENTPROG FINALS\obj\Debug\net5.0\Razor\Views\Donations\Certificate.cshtml.g.cs
-C:\Users\keno-pc\source\repos\enricbilanes\ENPROG-FinalProject\ENTPROG FINALS\obj\Debug\net5.0\ENTPROG FINALS.csproj.AssemblyReference.cache
 C:\Users\keno-pc\source\repos\enricbilanes\ENPROG-FinalProject\ENTPROG FINALS\obj\Debug\net5.0\Razor\Views\Donations\Certificate.cshtml.g.cs
 D:\School Files\ENTPROG\GitHub Repo\Final Project 4\ENTPROG FINALS\bin\Debug\net5.0\appsettings.Development.json
 D:\School Files\ENTPROG\GitHub Repo\Final Project 4\ENTPROG FINALS\bin\Debug\net5.0\appsettings.json

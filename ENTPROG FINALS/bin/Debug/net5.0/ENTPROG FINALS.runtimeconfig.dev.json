@@ -1,8 +1,8 @@
 {
   "runtimeOptions": {
     "additionalProbingPaths": [
-      "C:\\Users\\keno-pc\\.dotnet\\store\\|arch|\\|tfm|",
-      "C:\\Users\\keno-pc\\.nuget\\packages"
+      "C:\\Users\\cheet\\.dotnet\\store\\|arch|\\|tfm|",
+      "C:\\Users\\cheet\\.nuget\\packages"
     ]
   }
 }

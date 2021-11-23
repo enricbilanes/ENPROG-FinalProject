@@ -49,7 +49,14 @@ namespace ENTPROG_FINALS.Controllers
                 donation.LastName = user.LastName;
                 donation.UserId = Guid.Parse(userId);
             }
-             _context.Donations.Add(donation);
+            _context.Donations.Add(donation);
+            _context.SaveChanges();
+
+            var beneficiary = selectedBeneficiary;
+            {
+                beneficiary.DonationSummary += donation.DonationAmount;
+            }
+            _context.Beneficiaries.Update(beneficiary);
             _context.SaveChanges();
 
             //Transaction Log
@@ -88,13 +95,23 @@ namespace ENTPROG_FINALS.Controllers
         {
             var selectedBeneficiary = _context.Beneficiaries.Where(c => c.BeneficiaryID == record.Beneficiary.BeneficiaryID).SingleOrDefault();
             var donation = _context.Donations.Where(i => i.DonationID == id).SingleOrDefault();
-            {
-                donation.DonationAmount = record.DonationAmount;
-                donation.Beneficiary = selectedBeneficiary;
-                donation.Anonymous = record.Anonymous;
-            }
 
+            var beneficiary = _context.Beneficiaries.Where(b => b.BeneficiaryID == donation.Beneficiary.BeneficiaryID).SingleOrDefault();
+            {
+                beneficiary.DonationSummary -= donation.DonationAmount;
+            }
+            _context.Beneficiaries.Update(beneficiary);
+            _context.SaveChanges();
+
+            donation.DonationAmount = record.DonationAmount;
+            donation.Beneficiary = selectedBeneficiary;
+            donation.Anonymous = record.Anonymous;
             _context.Donations.Update(donation);
+            _context.SaveChanges();
+
+            selectedBeneficiary.DonationSummary += donation.DonationAmount;
+            _context.Beneficiaries.Update(selectedBeneficiary);
+            _context.SaveChanges();
 
             //Transaction Log
             var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
@@ -127,7 +144,12 @@ namespace ENTPROG_FINALS.Controllers
                 return RedirectToAction("List");
             }
 
-            _context.Donations.Remove(donation);
+            var beneficiary = _context.Beneficiaries.Where(i => i.BeneficiaryID == donation.Beneficiary.BeneficiaryID).SingleOrDefault();
+            {
+                beneficiary.DonationSummary -= donation.DonationAmount;
+            }
+            _context.Beneficiaries.Update(beneficiary);
+            _context.SaveChanges();
 
             //Transaction Log
             var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
@@ -142,6 +164,9 @@ namespace ENTPROG_FINALS.Controllers
                 transacLog.Anonymous = donation.Anonymous;
             }
             _context.Transactions.Add(transacLog);
+            _context.SaveChanges();
+
+            _context.Donations.Remove(donation);
             _context.SaveChanges();
 
             return RedirectToAction("List");
@@ -161,38 +186,6 @@ namespace ENTPROG_FINALS.Controllers
 
             return View(donation);
         }
-        /*
-        [HttpPost]
-        public IActionResult Certificate(int? id, Donation record)
-        {
-            var selectedBeneficiary = _context.Beneficiaries.Where(c => c.BeneficiaryID == record.Beneficiary.BeneficiaryID).SingleOrDefault();
-            var donation = _context.Donations.Where(i => i.DonationID == id).SingleOrDefault();
-            {
-                donation.FirstName = record.FirstName;
-                donation.DonationAmount = record.DonationAmount;
-                donation.Beneficiary = selectedBeneficiary;
-            }
-
-            _context.Donations.Update(donation);
-
-            //Transaction Log
-            var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
-            var user = _context.Users.Where(u => u.Id == userId).SingleOrDefault();
-            var transacLog = new Transaction();
-            {
-                transacLog.Table = "Donations";
-                transacLog.RecordID = donation.DonationID.ToString();
-                transacLog.Date = DateTime.Now;
-                transacLog.User = user.FirstName + user.LastName;
-                transacLog.TransactionMade = "UPDATE";
-                transacLog.Anonymous = donation.Anonymous;
-            }
-            _context.Transactions.Add(transacLog);
-            _context.SaveChanges();
-
-            return RedirectToAction("List");
-        }
-        */
 
     }
 }

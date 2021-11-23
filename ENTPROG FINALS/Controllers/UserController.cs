@@ -67,8 +67,9 @@ namespace ENTPROG_FINALS.Controllers
                 user.PassWord = record.PassWord;
             }
             _context.Users.Update(user);
+            _context.SaveChanges();
 
-            
+
             //Transaction Log
             var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
             var currentUser = _context.Users.Where(u => u.Id == userId).SingleOrDefault();
@@ -81,8 +82,7 @@ namespace ENTPROG_FINALS.Controllers
                 transacLog.TransactionMade = "UPDATE";
                 transacLog.Anonymous = DonationType.Visible;
             }
-            _context.Transactions.Add(transacLog);
-            
+            _context.Transactions.Add(transacLog);           
             _context.SaveChanges();
 
             return RedirectToAction("Index");
@@ -101,6 +101,7 @@ namespace ENTPROG_FINALS.Controllers
                 return RedirectToAction("Index");
             }
 
+
             //Transaction Log
             var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
             var currentUser = _context.Users.Where(u => u.Id == userId).SingleOrDefault();
@@ -114,6 +115,7 @@ namespace ENTPROG_FINALS.Controllers
                 transacLog.Anonymous = DonationType.Visible;
             }
             _context.Transactions.Add(transacLog);
+            _context.SaveChanges();
 
             _context.Users.Remove(user);
             _context.SaveChanges();

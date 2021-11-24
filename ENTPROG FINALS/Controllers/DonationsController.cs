@@ -8,13 +8,12 @@ using ENTPROG_FINALS.Models;
 using Microsoft.EntityFrameworkCore;
 
 using Microsoft.AspNetCore.Authentication;
-
-//authorization
 using Microsoft.AspNetCore.Authorization;
 using System.Security.Claims;
 
 namespace ENTPROG_FINALS.Controllers
 {
+    [Authorize]
     public class DonationsController : Controller
     {
         private readonly ApplicationDbContext _context;
@@ -24,16 +23,13 @@ namespace ENTPROG_FINALS.Controllers
             _context = context;
         }
 
-        //Added authorize, everything that has authorize requires login to do the action
-        [Authorize]
         public IActionResult List()
         {
             var list = _context.Donations.Include(p => p.Beneficiary).ToList();
             return View(list);
         }
 
-        //Added authorize, everything that has authorize requires login to do the action
-        [Authorize]
+
         public IActionResult Create()
         {
             return View();
@@ -83,8 +79,7 @@ namespace ENTPROG_FINALS.Controllers
             return RedirectToAction("List");
         }
 
-        //Added authorize, make sure this is for admins only
-        [Authorize]
+
         public IActionResult Edit(int? id)
         {
             if (id == null)
@@ -104,14 +99,15 @@ namespace ENTPROG_FINALS.Controllers
         public IActionResult Edit(int? id, Donation record)
         {
             var selectedBeneficiary = _context.Beneficiaries.Where(c => c.BeneficiaryID == record.Beneficiary.BeneficiaryID).SingleOrDefault();
-            var donation = _context.Donations.Where(i => i.DonationID == id).SingleOrDefault();
+            var donation = _context.Donations.Include(b => b.Beneficiary).Where(i => i.DonationID == id).SingleOrDefault();
 
             var beneficiary = _context.Beneficiaries.Where(b => b.BeneficiaryID == donation.Beneficiary.BeneficiaryID).SingleOrDefault();
+            if(beneficiary != null)
             {
-                beneficiary.DonationSummary -= donation.DonationAmount;
+                beneficiary.DonationSummary -= donation.DonationAmount;            
+                _context.Beneficiaries.Update(beneficiary);
+                _context.SaveChanges();
             }
-            _context.Beneficiaries.Update(beneficiary);
-            _context.SaveChanges();
 
             donation.DonationAmount = record.DonationAmount;
             donation.Beneficiary = selectedBeneficiary;
@@ -141,8 +137,6 @@ namespace ENTPROG_FINALS.Controllers
             return RedirectToAction("List");
         }
 
-        //Added authorize, make sure this is for admins only
-        [Authorize]
         public IActionResult Delete(int? id)
         {
             if (id == null)
@@ -150,23 +144,19 @@ namespace ENTPROG_FINALS.Controllers
                 return RedirectToAction("List");
             }
 
-            //To include the contents of the beneficiary to line 152 (var beneficiary)
             var donation = _context.Donations.Include(b => b.Beneficiary).Where(i => i.DonationID == id).SingleOrDefault();
-
-            //var donation = _context.Donations.Where(i => i.DonationID == id).SingleOrDefault();
-
-
             if (donation == null)
             {
                 return RedirectToAction("List");
             }
 
             var beneficiary = _context.Beneficiaries.Where(b => b.BeneficiaryID == donation.Beneficiary.BeneficiaryID).SingleOrDefault();
+            if (beneficiary != null)
             {
                 beneficiary.DonationSummary -= donation.DonationAmount;
+                _context.Beneficiaries.Update(beneficiary);
+                _context.SaveChanges();
             }
-            _context.Beneficiaries.Update(beneficiary);
-            _context.SaveChanges();
 
             //Transaction Log
             var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
@@ -188,6 +178,8 @@ namespace ENTPROG_FINALS.Controllers
 
             return RedirectToAction("List");
         }
+
+
         public IActionResult Certificate(int? id)
         {
             if (id == null)

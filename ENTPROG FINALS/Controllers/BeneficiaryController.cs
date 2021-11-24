@@ -6,11 +6,16 @@ using System.Threading.Tasks;
 
 using ENTPROG_FINALS.Data;
 using ENTPROG_FINALS.Models;
-using System.Security.Claims;
+
 using Microsoft.EntityFrameworkCore;
+
+using Microsoft.AspNetCore.Authorization;
+using System.Security.Claims;
 
 namespace ENTPROG_FINALS.Controllers
 {
+
+    [Authorize]
     public class BeneficiaryController : Controller
     {
         private readonly ApplicationDbContext _context;

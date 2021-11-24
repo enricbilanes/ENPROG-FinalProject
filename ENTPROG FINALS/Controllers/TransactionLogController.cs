@@ -12,7 +12,6 @@ using System.Security.Claims;
 
 namespace ENTPROG_FINALS.Controllers
 {
-    //Added authorize, make sure this entire class is for admins only
     [Authorize]
     public class TransactionLogController : Controller 
     {

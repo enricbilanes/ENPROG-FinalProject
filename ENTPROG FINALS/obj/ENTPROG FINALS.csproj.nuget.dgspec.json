@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "D:\\School Files\\ENTPROG\\GitHub Repo\\Final Project 4\\ENTPROG FINALS\\ENTPROG FINALS.csproj": {}
+    "C:\\Users\\keno-pc\\source\\repos\\enricbilanes\\ENPROG-FinalProject\\ENTPROG FINALS\\ENTPROG FINALS.csproj": {}
   },
   "projects": {
-    "D:\\School Files\\ENTPROG\\GitHub Repo\\Final Project 4\\ENTPROG FINALS\\ENTPROG FINALS.csproj": {
+    "C:\\Users\\keno-pc\\source\\repos\\enricbilanes\\ENPROG-FinalProject\\ENTPROG FINALS\\ENTPROG FINALS.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\School Files\\ENTPROG\\GitHub Repo\\Final Project 4\\ENTPROG FINALS\\ENTPROG FINALS.csproj",
+        "projectUniqueName": "C:\\Users\\keno-pc\\source\\repos\\enricbilanes\\ENPROG-FinalProject\\ENTPROG FINALS\\ENTPROG FINALS.csproj",
         "projectName": "ENTPROG FINALS",
-        "projectPath": "D:\\School Files\\ENTPROG\\GitHub Repo\\Final Project 4\\ENTPROG FINALS\\ENTPROG FINALS.csproj",
-        "packagesPath": "C:\\Users\\me\\.nuget\\packages\\",
-        "outputPath": "D:\\School Files\\ENTPROG\\GitHub Repo\\Final Project 4\\ENTPROG FINALS\\obj\\",
+        "projectPath": "C:\\Users\\keno-pc\\source\\repos\\enricbilanes\\ENPROG-FinalProject\\ENTPROG FINALS\\ENTPROG FINALS.csproj",
+        "packagesPath": "C:\\Users\\keno-pc\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\keno-pc\\source\\repos\\enricbilanes\\ENPROG-FinalProject\\ENTPROG FINALS\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\me\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\keno-pc\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [

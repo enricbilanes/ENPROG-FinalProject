@@ -706,3 +706,4 @@ C:\Users\cheet\Source\Repos\ENPROG-FinalProject\ENTPROG FINALS\obj\Debug\net5.0\
 C:\Users\cheet\Source\Repos\ENPROG-FinalProject\ENTPROG FINALS\obj\Debug\net5.0\ENTPROG FINALS.pdb
 C:\Users\cheet\Source\Repos\ENPROG-FinalProject\ENTPROG FINALS\obj\Debug\net5.0\ENTPROG FINALS.genruntimeconfig.cache
 D:\School Files\ENTPROG\GitHub Repo\Final Project 4\ENTPROG FINALS\obj\Debug\net5.0\Razor\Views\Beneficiary\Summary.cshtml.g.cs
+C:\Users\keno-pc\source\repos\enricbilanes\ENPROG-FinalProject\ENTPROG FINALS\obj\Debug\net5.0\Razor\Views\Beneficiary\Summary.cshtml.g.cs

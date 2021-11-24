@@ -19,9 +19,6 @@
             <th>
                 @Html.DisplayNameFor(model => model.Email)
             </th>
-            <th>
-                @Html.DisplayNameFor(model => model.PassWord)
-            </th>
             <th></th>
         </tr>
     </thead>
@@ -37,9 +34,6 @@
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.Email)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.PassWord)
                 </td>
                 <td>
                     <a class="btn btn-sm btn-warning" asp-action="Edit" asp-route-id="@item.Id"><i class="fa fa-edit"></i></a> |

@@ -68,7 +68,7 @@ namespace ENTPROG_FINALS.Controllers
                 user.FirstName = record.FirstName;
                 user.LastName = record.LastName;
                 user.Email = record.Email;
-                user.PassWord = record.PassWord;
+                user.UserName = record.Email;
             }
             _context.Users.Update(user);
             _context.SaveChanges();

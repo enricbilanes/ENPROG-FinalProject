@@ -98,8 +98,6 @@ namespace ENTPROG_FINALS.Areas.Identity.Pages.Account
                     LastName = Input.LastName,
                     UserName = Input.Email,
                     Email = Input.Email,
-                    NormalizedEmail = Input.Email,
-                    PassWord = Input.Password,
                     RoleSetting = RoleType.User,
 
                     EmailConfirmed = true

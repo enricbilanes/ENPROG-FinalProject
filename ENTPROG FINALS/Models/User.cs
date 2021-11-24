@@ -18,12 +18,6 @@ namespace ENTPROG_FINALS.Models
         [Required(ErrorMessage = "Required.")]
         public string LastName { get; set; }
 
-        [Required(ErrorMessage = "Required.")]
-        public string Email { get; set; }
-
-        [Required(ErrorMessage = "Required.")]
-        public string PassWord { get; set; }
-
         [Display(Name = "Role Type")]
         public RoleType RoleSetting { get; set; }
 

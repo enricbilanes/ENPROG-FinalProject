@@ -1,0 +1,36 @@
+﻿@model ENTPROG_FINALS.Models.Beneficiary
+
+@{
+    ViewData["Title"] = "Edit";
+}
+<body style="background-color: #CEF6F5;">
+    <div class="text-center">
+        <br />
+        <br />
+        <input type="hidden" asp-for="BeneficiaryID" />
+        <h1 style="font-size:100px; color:black; font-style:italic" class="display-4">
+            SUMMARY: 
+        </h1>
+        <br />
+        <br />
+        <br />
+        <H1>Total: @Model.DonationSummary PHP to</H1>
+        <h2>@Model.Beneficiaries</h2>
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <div>
+            <a asp-action="Index" class="btn btn-success">Back to List</a>
+        </div>
+    </div>
+</body>

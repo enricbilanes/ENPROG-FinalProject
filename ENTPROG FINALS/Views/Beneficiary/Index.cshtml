@@ -36,6 +36,7 @@
                     @Html.DisplayFor(modelItem => item.DonationSummary)
                 </td>
                 <td>
+                    <a class="btn btn-sm btn-warning" asp-action="Summary" asp-route-id="@item.BeneficiaryID"><i class="fa fa-window-maximize"></i></a> |
                     <a class="btn btn-sm btn-warning" asp-action="Edit" asp-route-id="@item.BeneficiaryID"><i class="fa fa-edit"></i></a> |
                     <a asp-action="Delete" asp-route-id="@item.BeneficiaryID" class="btn btn-sm btn-danger " onclick='return confirm
         ("Are you sure?");'><i class="fa fa-remove"></i></a>

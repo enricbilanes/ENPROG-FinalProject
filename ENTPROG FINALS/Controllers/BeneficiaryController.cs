@@ -144,5 +144,22 @@ namespace ENTPROG_FINALS.Controllers
 
             return RedirectToAction();
         }
+
+        public IActionResult Summary(int? id)
+        {
+            if (id == null)
+            {
+                return RedirectToAction("Index");
+            }
+
+            var Beneficiary = _context.Beneficiaries.Where(i => i.BeneficiaryID == id).SingleOrDefault();
+            if (Beneficiary == null)
+            {
+                return RedirectToAction("Index");
+            }
+
+            return View(Beneficiary);
+        }
     }
 }
+

@@ -6,9 +6,14 @@ using Microsoft.AspNetCore.Mvc;
 
 using ENTPROG_FINALS.Data;
 using ENTPROG_FINALS.Models;
+//Authorize vv
+using Microsoft.AspNetCore.Authorization;
+using System.Security.Claims;
 
 namespace ENTPROG_FINALS.Controllers
 {
+    //Added authorize, make sure this entire class is for admins only
+    [Authorize]
     public class TransactionLogController : Controller 
     {
         private readonly ApplicationDbContext _context;

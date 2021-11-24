@@ -6,16 +6,18 @@ using Microsoft.AspNetCore.Mvc;
 
 using ENTPROG_FINALS.Data;
 using ENTPROG_FINALS.Models;
+
 //Authorize vv
 using Microsoft.AspNetCore.Authorization;
 using System.Security.Claims;
+
 using Microsoft.EntityFrameworkCore;
 
 
 
 namespace ENTPROG_FINALS.Controllers
 {
-    //[Authorize]
+    [Authorize]
     public class UserController : Controller
     {
         private readonly ApplicationDbContext _context;
@@ -25,7 +27,7 @@ namespace ENTPROG_FINALS.Controllers
             _context = context;
         }
 
-        /* URL BLOCKING - apply this to each Action Result
+        /*URL BLOCKING - apply this to each Action Result
         public bool UserVerify()
         {
             var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
@@ -33,10 +35,10 @@ namespace ENTPROG_FINALS.Controllers
 
             if(user.RoleSetting != RoleType.Admin)
             {
-                return RedirectToAction("Index", ")
+                return RedirectToAction("Index", "Home")
             }
-        }
-        */
+        }*/
+        
 
         public IActionResult Index()
         {

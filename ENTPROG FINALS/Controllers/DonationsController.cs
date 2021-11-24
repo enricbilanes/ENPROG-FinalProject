@@ -3,14 +3,15 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-
 using ENTPROG_FINALS.Data;
 using ENTPROG_FINALS.Models;
-using System.Security.Claims;
 using Microsoft.EntityFrameworkCore;
 
-//added authorization
 using Microsoft.AspNetCore.Authentication;
+
+//authorization
+using Microsoft.AspNetCore.Authorization;
+using System.Security.Claims;
 
 namespace ENTPROG_FINALS.Controllers
 {
@@ -24,13 +25,15 @@ namespace ENTPROG_FINALS.Controllers
         }
 
         //Added authorize, everything that has authorize requires login to do the action
-        //[Authorize]
+        [Authorize]
         public IActionResult List()
         {
             var list = _context.Donations.Include(p => p.Beneficiary).ToList();
             return View(list);
         }
 
+        //Added authorize, everything that has authorize requires login to do the action
+        [Authorize]
         public IActionResult Create()
         {
             return View();
@@ -80,6 +83,8 @@ namespace ENTPROG_FINALS.Controllers
             return RedirectToAction("List");
         }
 
+        //Added authorize, make sure this is for admins only
+        [Authorize]
         public IActionResult Edit(int? id)
         {
             if (id == null)
@@ -136,6 +141,8 @@ namespace ENTPROG_FINALS.Controllers
             return RedirectToAction("List");
         }
 
+        //Added authorize, make sure this is for admins only
+        [Authorize]
         public IActionResult Delete(int? id)
         {
             if (id == null)

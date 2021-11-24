@@ -9,6 +9,9 @@ using ENTPROG_FINALS.Models;
 using System.Security.Claims;
 using Microsoft.EntityFrameworkCore;
 
+//added authorization
+using Microsoft.AspNetCore.Authentication;
+
 namespace ENTPROG_FINALS.Controllers
 {
     public class DonationsController : Controller
@@ -20,6 +23,8 @@ namespace ENTPROG_FINALS.Controllers
             _context = context;
         }
 
+        //Added authorize, everything that has authorize requires login to do the action
+        //[Authorize]
         public IActionResult List()
         {
             var list = _context.Donations.Include(p => p.Beneficiary).ToList();
@@ -138,7 +143,12 @@ namespace ENTPROG_FINALS.Controllers
                 return RedirectToAction("List");
             }
 
-            var donation = _context.Donations.Where(i => i.DonationID == id).SingleOrDefault();
+            //To include the contents of the beneficiary to line 152 (var beneficiary)
+            var donation = _context.Donations.Include(b => b.Beneficiary).Where(i => i.DonationID == id).SingleOrDefault();
+
+            //var donation = _context.Donations.Where(i => i.DonationID == id).SingleOrDefault();
+
+
             if (donation == null)
             {
                 return RedirectToAction("List");

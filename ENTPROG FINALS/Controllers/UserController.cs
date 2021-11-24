@@ -6,9 +6,12 @@ using Microsoft.AspNetCore.Mvc;
 
 using ENTPROG_FINALS.Data;
 using ENTPROG_FINALS.Models;
-using System.Security.Claims;
+//Authorize vv
 using Microsoft.AspNetCore.Authorization;
+using System.Security.Claims;
 using Microsoft.EntityFrameworkCore;
+
+
 
 namespace ENTPROG_FINALS.Controllers
 {

@@ -7,7 +7,6 @@ using Microsoft.AspNetCore.Mvc;
 using ENTPROG_FINALS.Data;
 using ENTPROG_FINALS.Models;
 
-//Authorize vv
 using Microsoft.AspNetCore.Authorization;
 using System.Security.Claims;
 

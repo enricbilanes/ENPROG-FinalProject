@@ -68,11 +68,6 @@ namespace ENTPROG_FINALS.Controllers
         [HttpPost]
         public IActionResult Edit(Guid? id, User record)
         {
-            if (GetCurrentUser().RoleSetting != RoleType.Admin)
-            {
-                return RedirectToAction("Index", "Home");
-            }
-
             var user = _context.Users.Where(i => i.Id == id.ToString()).SingleOrDefault();
             {
                 user.FirstName = record.FirstName;
@@ -103,6 +98,11 @@ namespace ENTPROG_FINALS.Controllers
 
         public IActionResult Delete(Guid? id)
         {
+            if (GetCurrentUser().RoleSetting != RoleType.Admin)
+            {
+                return RedirectToAction("Index", "Home");
+            }
+
             if (id == null)
             {
                 return RedirectToAction("Index");
@@ -113,7 +113,6 @@ namespace ENTPROG_FINALS.Controllers
             {
                 return RedirectToAction("Index");
             }
-
 
             //Transaction Log
             var currentUser = GetCurrentUser();

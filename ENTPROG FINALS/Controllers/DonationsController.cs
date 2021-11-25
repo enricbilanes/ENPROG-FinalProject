@@ -23,6 +23,13 @@ namespace ENTPROG_FINALS.Controllers
             _context = context;
         }
 
+        public User GetCurrentUser()
+        {
+            var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            var user = _context.Users.Where(u => u.Id == userId).SingleOrDefault();
+            return user;
+        }
+
         public IActionResult List()
         {
             var list = _context.Donations.Include(p => p.Beneficiary).ToList();
@@ -36,22 +43,18 @@ namespace ENTPROG_FINALS.Controllers
         }
         [HttpPost]
         public IActionResult Create(Donation record)
-        {
-            //To capture the user, userid, and object (to check if logged in or not)
-            var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
-            var user = _context.Users.Where(u => u.Id == userId).SingleOrDefault();
-
+        { 
             var selectedBeneficiary = _context.Beneficiaries.Where(c => c.BeneficiaryID == record.Beneficiary.BeneficiaryID).SingleOrDefault();
 
             var donation = new Donation();
             {
-                donation.Role = user.RoleSetting.ToString();
+                donation.Role = GetCurrentUser().RoleSetting.ToString();
                 donation.DonationAmount = record.DonationAmount;
                 donation.Beneficiary = selectedBeneficiary;
                 donation.Anonymous = record.Anonymous;             
-                donation.FirstName = user.FirstName;
-                donation.LastName = user.LastName;
-                donation.UserId = Guid.Parse(userId);
+                donation.FirstName = GetCurrentUser().FirstName;
+                donation.LastName = GetCurrentUser().LastName;
+                donation.UserId = Guid.Parse(GetCurrentUser().Id);
             }
             _context.Donations.Add(donation);
             _context.SaveChanges();
@@ -69,7 +72,7 @@ namespace ENTPROG_FINALS.Controllers
                 transacLog.Table = "Donations";
                 transacLog.RecordID = donation.DonationID.ToString();
                 transacLog.Date = DateTime.Now;
-                transacLog.User = user.FirstName + user.LastName;
+                transacLog.User = donation.FirstName + donation.LastName;
                 transacLog.TransactionMade = "CREATE";
                 transacLog.Anonymous = donation.Anonymous;
             }
@@ -82,6 +85,11 @@ namespace ENTPROG_FINALS.Controllers
 
         public IActionResult Edit(int? id)
         {
+            if (GetCurrentUser().RoleSetting != RoleType.Admin)
+            {
+                return RedirectToAction("Index", "Home");
+            }
+
             if (id == null)
             {
                 return RedirectToAction("List");
@@ -120,14 +128,12 @@ namespace ENTPROG_FINALS.Controllers
             _context.SaveChanges();
 
             //Transaction Log
-            var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
-            var user = _context.Users.Where(u => u.Id == userId).SingleOrDefault();
             var transacLog = new Transaction();
             {
                 transacLog.Table = "Donations";
                 transacLog.RecordID = donation.DonationID.ToString();
                 transacLog.Date = DateTime.Now;
-                transacLog.User = user.FirstName + user.LastName;
+                transacLog.User = GetCurrentUser().FirstName + GetCurrentUser().LastName;
                 transacLog.TransactionMade = "UPDATE";
                 transacLog.Anonymous = donation.Anonymous;
             }
@@ -139,6 +145,11 @@ namespace ENTPROG_FINALS.Controllers
 
         public IActionResult Delete(int? id)
         {
+            if (GetCurrentUser().RoleSetting != RoleType.Admin)
+            {
+                return RedirectToAction("Index", "Home");
+            }
+
             if (id == null)
             {
                 return RedirectToAction("List");
@@ -159,14 +170,12 @@ namespace ENTPROG_FINALS.Controllers
             }
 
             //Transaction Log
-            var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
-            var user = _context.Users.Where(u => u.Id == userId).SingleOrDefault();
             var transacLog = new Transaction();
             {
                 transacLog.Table = "Donations";
                 transacLog.RecordID = donation.DonationID.ToString();
                 transacLog.Date = DateTime.Now;
-                transacLog.User = user.FirstName + user.LastName;
+                transacLog.User = GetCurrentUser().FirstName + GetCurrentUser().LastName;
                 transacLog.TransactionMade = "DELETE";
                 transacLog.Anonymous = donation.Anonymous;
             }
@@ -182,6 +191,7 @@ namespace ENTPROG_FINALS.Controllers
 
         public IActionResult Certificate(int? id)
         {
+
             if (id == null)
             {
                 return RedirectToAction("List");

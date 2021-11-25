@@ -25,29 +25,34 @@ namespace ENTPROG_FINALS.Controllers
         {
             _context = context;
         }
-
-        /*URL BLOCKING - apply this to each Action Result
-        public bool UserVerify()
+        
+        
+        public User GetCurrentUser()
         {
             var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
             var user = _context.Users.Where(u => u.Id == userId).SingleOrDefault();
-
-            if(user.RoleSetting != RoleType.Admin)
-            {
-                return RedirectToAction("Index", "Home")
-            }
-        }*/
+            return user;
+        }
         
-
         public IActionResult Index()
-        {
+        {        
+            if(GetCurrentUser().RoleSetting != RoleType.Admin)
+            {
+                return RedirectToAction("Index", "Home");
+            }
+            
             var users = _context.Users.ToList();
             return View(users);
         }
 
         public IActionResult Edit(Guid? id)
         {
-            if(id == null)
+            if (GetCurrentUser().RoleSetting != RoleType.Admin)
+            {
+                return RedirectToAction("Index", "Home");
+            }
+
+            if (id == null)
             {
                 return RedirectToAction("Index");
             }
@@ -63,6 +68,11 @@ namespace ENTPROG_FINALS.Controllers
         [HttpPost]
         public IActionResult Edit(Guid? id, User record)
         {
+            if (GetCurrentUser().RoleSetting != RoleType.Admin)
+            {
+                return RedirectToAction("Index", "Home");
+            }
+
             var user = _context.Users.Where(i => i.Id == id.ToString()).SingleOrDefault();
             {
                 user.FirstName = record.FirstName;
@@ -75,8 +85,7 @@ namespace ENTPROG_FINALS.Controllers
 
 
             //Transaction Log
-            var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
-            var currentUser = _context.Users.Where(u => u.Id == userId).SingleOrDefault();
+            var currentUser = GetCurrentUser();
             var transacLog = new Transaction();
             {
                 transacLog.Table = "Members";
@@ -107,8 +116,7 @@ namespace ENTPROG_FINALS.Controllers
 
 
             //Transaction Log
-            var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
-            var currentUser = _context.Users.Where(u => u.Id == userId).SingleOrDefault();
+            var currentUser = GetCurrentUser();
             var transacLog = new Transaction();
             {
                 transacLog.Table = "Members";

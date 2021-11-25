@@ -67,10 +67,10 @@
                     @{var userId = User.FindFirstValue(ClaimTypes.NameIdentifier); }
                     @if (userId == item.UserId.ToString())
                     {
-                        <a class="btn btn-sm btn-warning" asp-action="Certificate" asp-route-id="@item.DonationID"><i class="fa fa-certificate"></i>|</a>
+                        <a class="btn btn-sm btn-warning" asp-action="Certificate" asp-route-id="@item.DonationID"><i class="fa fa-certificate"></i></a>
 
                     }
-                    <a class="btn btn-sm btn-warning" asp-action="Edit" asp-route-id="@item.DonationID"><i class="fa fa-edit"></i></a> |
+                    | <a class="btn btn-sm btn-warning" asp-action="Edit" asp-route-id="@item.DonationID"><i class="fa fa-edit"></i></a> |
                     <a asp-action="Delete" asp-route-id="@item.DonationID" class="btn btn-sm btn-danger " onclick='return confirm("Are you sure?");'><i class="fa fa-remove"></i></a>
                 </td>
             </tr>

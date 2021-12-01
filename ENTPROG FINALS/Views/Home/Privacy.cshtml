@@ -1,15 +1,51 @@
 ﻿@{
     ViewData["Title"] = "About Us";
 }
+<style>
+    /* Three image containers (use 25% for four, and 50% for two, etc) */
+    .column {
+        float: left;
+        width: 33.33%;
+        padding: 5px;
+    }
 
+    /* Clear floats after image containers */
+    .row::after {
+        content: "";
+        clear: both;
+        display: table;
+    }
+
+    .row {
+        display: flex;
+    }
+
+    .column {
+        flex: 33.33%;
+        padding: 5px;
+    }
+</style>
 
 <body style="background-color: #CEF6F5;">
     <br />
     <h1>@ViewData["Title"]</h1>
+
+    <div class="row">
+        <div class="column">
+            <img src="~/css/doctor1.jfif" alt="doctors1" style="width:100%">
+        </div>
+        <div class="column">
+            <img src="~/css/doctor2.jfif" alt="doctors2" style="width:100%">
+        </div>
+        <div class="column">
+            <img src="~/css/doctor3.jfif" alt="doctors3" style="width:100%">
+        </div>
+    </div>
+
     <div class="content">
         <br />
         <br />
-        
+
         <p>
             Since the pandemic, the Philippines has had many problems in different areas mostly in health-care.
             By attempting to fix these problems the country has been in debt from different private organizations.
@@ -28,4 +64,6 @@
         </p>
         <br>
     </div>
+
+
 </body>

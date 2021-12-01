@@ -887,3 +887,6 @@ D:\School Files\ENTPROG\GitHub Repo\Final Project 5\ENTPROG FINALS\obj\Debug\net
 D:\School Files\ENTPROG\GitHub Repo\Final Project 5\ENTPROG FINALS\obj\Debug\net5.0\ENTPROG FINALS.genruntimeconfig.cache
 C:\Users\cheet\Source\Repos\ENPROG-FinalProject\ENTPROG FINALS\obj\Debug\net5.0\Razor\Views\Beneficiary\Summary.cshtml.g.cs
 C:\Users\keno-pc\source\repos\enricbilanes\ENPROG-FinalProject\ENTPROG FINALS\obj\Debug\net5.0\ENTPROG FINALS.csproj.AssemblyReference.cache
+D:\School Files\ENTPROG\GitHub Repo\Final Project 6\ENTPROG FINALS\obj\Debug\net5.0\ENTPROG FINALS.dll
+D:\School Files\ENTPROG\GitHub Repo\Final Project 6\ENTPROG FINALS\obj\Debug\net5.0\ref\ENTPROG FINALS.dll
+D:\School Files\ENTPROG\GitHub Repo\Final Project 6\ENTPROG FINALS\obj\Debug\net5.0\ENTPROG FINALS.pdb

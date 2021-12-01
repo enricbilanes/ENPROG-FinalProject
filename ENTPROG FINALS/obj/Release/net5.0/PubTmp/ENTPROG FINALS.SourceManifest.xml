@@ -1,5 +1,0 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<sitemanifest>
-  <IisApp path="C:\Users\keno-pc\source\repos\enricbilanes\ENPROG-FinalProject\ENTPROG FINALS\obj\Release\net5.0\PubTmp\Out\" />
-  <dbfullsql path="C:\Users\keno-pc\source\repos\enricbilanes\ENPROG-FinalProject\ENTPROG FINALS\obj\Release\net5.0\PubTmp\EFSQLScripts\ENTPROG_FINALS.Data.ApplicationDbContext.sql" />
-</sitemanifest>

@@ -1,13 +1,8 @@
 {
   "runtimeOptions": {
     "additionalProbingPaths": [
-<<<<<<< HEAD
       "C:\\Users\\keno-pc\\.dotnet\\store\\|arch|\\|tfm|",
       "C:\\Users\\keno-pc\\.nuget\\packages"
-=======
-      "C:\\Users\\me\\.dotnet\\store\\|arch|\\|tfm|",
-      "C:\\Users\\me\\.nuget\\packages"
->>>>>>> b38f227e48a97b00ac677a4d2dfe1ebd841f3891
     ]
   }
 }

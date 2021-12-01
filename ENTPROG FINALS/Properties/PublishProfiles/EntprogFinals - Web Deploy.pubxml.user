@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+This file is used by the publish/package process of your Web project. You can customize the behavior of this process
+by editing this MSBuild file. In order to learn more about this please visit https://go.microsoft.com/fwlink/?LinkID=208121. 
+-->
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <TimeStampOfAssociatedLegacyPublishXmlFile />
+    <EncryptedPassword>AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAMPgRqHY2Xkqc3wb6QX8mgQAAAAACAAAAAAAQZgAAAAEAACAAAAAFAhi5n5vVZ93tRP8cLOKrdEnju93yLIsmsWs/1nvA2QAAAAAOgAAAAAIAACAAAABaMnyZv0vRhDg0xdXi3iEx9GF78O5MNGyt/xcsgpQ5yYAAAADCH9N8QwOCo2KWEZdTtEZhVGZzvOyvdXYjKX2AHcEoo9i8nC3/s9qDwVbWpyWU1iwHUkfGt3pl0CTa6LAC/Rqhl1LXIoYxeiMsVYvLWtRIXCOubxu8KI7cZwqZtryzGzdhk5kOwLCz5kQ/OJphkCtipYN16Xb9b6TZJQ7h7QSHK0AAAADnFVzoO/kDPqXMU2rV98FTyJH/E5/mZJNnWPZJPAsZ01cf+vRtpQ+WwgyratttRqbCQ41n8YCzTWzeZQ7thahf</EncryptedPassword>
+    <History>True|2021-11-28T14:44:23.4190347Z;True|2021-11-28T22:07:17.2787493+08:00;</History>
+  </PropertyGroup>
+  <ItemGroup>
+    <DestinationConnectionStrings Include="MyConnection">
+      <Value>Data Source=tcp:entprogfinalsserver.database.windows.net,1433%3bInitial Catalog=EntprogFinals_db%3bUser Id=DBadmin%40entprogfinalsserver%3bPassword=Admin#360</Value>
+    </DestinationConnectionStrings>
+  </ItemGroup>
+  <ItemGroup>
+    <EFMigrations Include="ENTPROG_FINALS.Data.ApplicationDbContext">
+      <Value>Data Source=tcp:entprogfinalsserver.database.windows.net,1433%3bInitial Catalog=EntprogFinals_db%3bUser Id=DBadmin%40entprogfinalsserver%3bPassword=Admin#360</Value>
+    </EFMigrations>
+  </ItemGroup>
+</Project>

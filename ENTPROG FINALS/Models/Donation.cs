@@ -15,20 +15,29 @@ namespace ENTPROG_FINALS.Models
 
         public string Role { get; set; }
 
+        [Display (Name = "First Name")]
         public string FirstName { get; set; }
 
+        [Display (Name = "Last Name")]
         public string LastName { get; set; }
 
         public Guid? UserId { get; set; }
 
         [Required(ErrorMessage = "Required.")]
-        public int DonationAmount { get; set; }
+        public string DonationAmount { get; set; }
 
         [Required(ErrorMessage = "Required.")]
         public virtual Beneficiary Beneficiary { get; set; }
 
         [Display(Name = "Anonymous")]
         public DonationType Anonymous { get; set; }
+
+        [Display(Name = "Anonymous")]
+        public DateTime Date { get; set; }
+
+        [Display(Name = "Remarks")]
+        [DataType(DataType.MultilineText)]
+        public string Remarks { get; set; }
     }
 
     public enum DonationType

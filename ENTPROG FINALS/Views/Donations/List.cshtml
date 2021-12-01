@@ -1,5 +1,6 @@
 ﻿@model IEnumerable<ENTPROG_FINALS.Models.Donation>
 @using System.Security.Claims;
+@using System.Globalization;
 @{
     ViewData["Title"] = "List";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -29,6 +30,12 @@
                 @Html.DisplayNameFor(model => model.Beneficiary)
             </th>
             <th>
+                @Html.DisplayNameFor(model => model.Date)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Remarks)
+            </th>
+            <th>
                 @Html.DisplayNameFor(model => model.Anonymous)
             </th>
             <th></th>
@@ -37,43 +44,54 @@
     <tbody>
         @foreach (var item in Model)
         {
-            <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.DonationID)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Role)
-                </td>
-                <td>
-                    @if (item.Anonymous.ToString() == "Anonymous")
-                    {
-                        <text> N/A </text>
-                    }
-                    else
-                    {
-                        <text> @item.FirstName @item.LastName </text>
-                    }
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.DonationAmount)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Beneficiary.Beneficiaries)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Anonymous)
-                </td>
-                <td>
-                    @{var userId = User.FindFirstValue(ClaimTypes.NameIdentifier); }
-                    @if (userId == item.UserId.ToString())
-                    {
-                        <a class="btn btn-sm btn-warning" asp-action="Certificate" asp-route-id="@item.DonationID"><i class="fa fa-certificate"></i></a>
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.DonationID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Role)
+            </td>
+            <td>
+                @if (item.Anonymous.ToString() == "Anonymous")
+                {
+                    <text> N/A </text>
+                }
+                else
+                {
+                    <text> @item.FirstName @item.LastName </text>
+                }
+            </td>
+            <td>
+                @string.Format(new CultureInfo("fil-PH"), "{0:C2}", decimal.Parse(item.DonationAmount))
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Beneficiary.Beneficiaries)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Anonymous)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Date)
+            </td>
+            <td>
+                @if (item.Remarks == null)
+                {
+                    <text> No Remarks </text>
+                }
+                else
+                    @Html.DisplayFor(modelItem => item.Remarks)
+            </td>
+            <td>
+                @{var userId = User.FindFirstValue(ClaimTypes.NameIdentifier); }
+                @if (userId == item.UserId.ToString())
+                {
+                    <a class="btn btn-sm btn-warning" asp-action="Certificate" asp-route-id="@item.DonationID"><i class="fa fa-certificate"></i></a>
 
-                    }
-                    | <a class="btn btn-sm btn-warning" asp-action="Edit" asp-route-id="@item.DonationID"><i class="fa fa-edit"></i></a> |
-                    <a asp-action="Delete" asp-route-id="@item.DonationID" class="btn btn-sm btn-danger " onclick='return confirm("Are you sure?");'><i class="fa fa-remove"></i></a>
-                </td>
-            </tr>
+                }
+                | <a class="btn btn-sm btn-warning" asp-action="Edit" asp-route-id="@item.DonationID"><i class="fa fa-edit"></i></a> |
+                <a asp-action="Delete" asp-route-id="@item.DonationID" class="btn btn-sm btn-danger " onclick='return confirm("Are you sure?");'><i class="fa fa-remove"></i></a>
+            </td>
+        </tr>
         }
     </tbody>
 </table>

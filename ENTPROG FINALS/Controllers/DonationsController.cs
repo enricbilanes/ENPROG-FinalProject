@@ -61,7 +61,7 @@ namespace ENTPROG_FINALS.Controllers
 
             var beneficiary = selectedBeneficiary;
             {
-                beneficiary.DonationSummary += donation.DonationAmount;
+                beneficiary.DonationSummary = (decimal.Parse(beneficiary.DonationSummary) + decimal.Parse(donation.DonationAmount)).ToString();
             }
             _context.Beneficiaries.Update(beneficiary);
             _context.SaveChanges();
@@ -112,7 +112,7 @@ namespace ENTPROG_FINALS.Controllers
             var beneficiary = _context.Beneficiaries.Where(b => b.BeneficiaryID == donation.Beneficiary.BeneficiaryID).SingleOrDefault();
             if(beneficiary != null)
             {
-                beneficiary.DonationSummary -= donation.DonationAmount;            
+                beneficiary.DonationSummary =  (decimal.Parse(beneficiary.DonationSummary) - decimal.Parse(donation.DonationAmount)).ToString();            
                 _context.Beneficiaries.Update(beneficiary);
                 _context.SaveChanges();
             }
@@ -123,7 +123,8 @@ namespace ENTPROG_FINALS.Controllers
             _context.Donations.Update(donation);
             _context.SaveChanges();
 
-            selectedBeneficiary.DonationSummary += donation.DonationAmount;
+
+            selectedBeneficiary.DonationSummary = (decimal.Parse(selectedBeneficiary.DonationSummary) + donation.DonationAmount);
             _context.Beneficiaries.Update(selectedBeneficiary);
             _context.SaveChanges();
 
@@ -164,7 +165,7 @@ namespace ENTPROG_FINALS.Controllers
             var beneficiary = _context.Beneficiaries.Where(b => b.BeneficiaryID == donation.Beneficiary.BeneficiaryID).SingleOrDefault();
             if (beneficiary != null)
             {
-                beneficiary.DonationSummary -= donation.DonationAmount;
+                beneficiary.DonationSummary = (decimal.Parse(beneficiary.DonationSummary) - decimal.Parse(donation.DonationAmount)).ToString();
                 _context.Beneficiaries.Update(beneficiary);
                 _context.SaveChanges();
             }

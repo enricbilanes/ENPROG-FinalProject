@@ -11,16 +11,16 @@ namespace ENTPROG_FINALS.Models
 {
     public class User : IdentityUser
     {
-
+        [Display(Name = "First Name")]
         [Required(ErrorMessage = "Required.")]
         public string FirstName { get; set; }
 
+        [Display(Name = "Last Name")]
         [Required(ErrorMessage = "Required.")]
         public string LastName { get; set; }
 
         [Display(Name = "Role Type")]
         public RoleType RoleSetting { get; set; }
-
     }
 
     public enum RoleType

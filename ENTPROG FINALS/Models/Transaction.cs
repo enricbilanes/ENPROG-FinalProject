@@ -10,10 +10,12 @@ namespace ENTPROG_FINALS.Models
     public class Transaction
     {
         [Key]
+        [Display(Name = "ID")]
         public int TransactionID { get; set; }
 
         public string Table { get; set; }
 
+        [Display(Name = "Record ID")]
         [Required(ErrorMessage = "Required.")]
         public string RecordID { get; set; }
 
@@ -23,6 +25,7 @@ namespace ENTPROG_FINALS.Models
         [Required(ErrorMessage = "Required.")]
         public string User { get; set; }
 
+        [Display(Name = "Transaction Made")]
         [Required(ErrorMessage = "Required.")]
         public string TransactionMade { get; set; }
 

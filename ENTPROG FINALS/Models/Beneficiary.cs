@@ -10,6 +10,7 @@ namespace ENTPROG_FINALS.Models
     public class Beneficiary
     {
         [Key]
+        [Display (Name = "ID")]
         public int BeneficiaryID { get; set; }
 
         [Required(ErrorMessage = "Required.")]
@@ -18,8 +19,18 @@ namespace ENTPROG_FINALS.Models
         [Required(ErrorMessage = "Required.")]
         public string Decsription { get; set; }
 
+        [Display (Name = "Donation Summary")]
         [Required(ErrorMessage = "Required.")]
-        public int DonationSummary { get; set; }
+        public string DonationSummary { get; set; }
 
+        [Display (Name = "Contact No.")]
+        [Required(ErrorMessage = "Required.")]
+        public string ContacNo { get; set; }
+
+        [Required(ErrorMessage = "Required.")]
+        public string Email { get; set; }
+
+        [Required(ErrorMessage = "Required.")]
+        public string Address { get; set; }
     }
 }

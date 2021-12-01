@@ -59,7 +59,7 @@ namespace ENTPROG_FINALS.Controllers
             {
                 Beneficiary.Beneficiaries = record.Beneficiaries;
                 Beneficiary.Decsription = record.Decsription;
-                Beneficiary.DonationSummary = 0;
+                Beneficiary.DonationSummary = "0";
             };
             _context.Beneficiaries.Add(Beneficiary);
             _context.SaveChanges();

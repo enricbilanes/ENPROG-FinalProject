@@ -26,7 +26,15 @@ namespace ENTPROG_FINALS.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+                    b.Property<string>("Address")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("Beneficiaries")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ContacNo")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
@@ -34,8 +42,13 @@ namespace ENTPROG_FINALS.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("DonationSummary")
-                        .HasColumnType("int");
+                    b.Property<string>("DonationSummary")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Email")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("BeneficiaryID");
 
@@ -87,13 +100,20 @@ namespace ENTPROG_FINALS.Migrations
                     b.Property<int?>("BeneficiaryID")
                         .HasColumnType("int");
 
-                    b.Property<int>("DonationAmount")
-                        .HasColumnType("int");
+                    b.Property<DateTime>("Date")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("DonationAmount")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("FirstName")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("LastName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Remarks")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Role")

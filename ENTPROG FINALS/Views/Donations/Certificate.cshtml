@@ -2,24 +2,25 @@
 @inject ENTPROG_FINALS.Data.ApplicationDbContext _context;
 
 @{ ViewData["Title"] = "Certificate";
-    Layout = "~/Views/Shared/_Layout.cshtml";
     var beneficiaryList = _context.Beneficiaries.ToList(); }
+
 <body style="background-color: #CEF6F5;">
     <div class="text-center">
         <br />
         <br />
         <input type="hidden" asp-for="DonationID" />
-        <h1 style="font-size:100px; color:black; font-style:italic" class="display-4">
-            CERTIFICATE OF DONATION
+        <hr />
+        <h1 style="font-size:90px; color:black; font-family: 'Monotype Corsiva'" class="display-4">
+            CERTIFICATE OF APPRECIATION
         </h1>
+        <hr />
         <br />
         <br />
+        <h1 style="font-style: italic; color: black;" class="align-content-md-center">THIS CERTIFICATE IS PROUDLY AWARDED TO</h1>
         <br />
-        <h3>This certificate is awarded to</h3>
-        <h3> @Model.FirstName</h3>
-        <h3> as a thank you for </h3>
-        <h3>the donation of @Model.DonationAmount to @Model.Beneficiary.Beneficiaries</h3>
-        <br />
+        <h1 style="font-style: italic; color: black; text-decoration: underline "> @Model.FirstName</h1>
+        <h1 style="font-style: italic; color: black;">FOR THE DONATION OF @Model.DonationAmount PESOS TO @Model.Beneficiary.Beneficiaries</h1>
+        <p style="font-size:200px; color:darkgoldenrod" class="fa fa-certificate"></p>
         <br />
         <br />
         <br />

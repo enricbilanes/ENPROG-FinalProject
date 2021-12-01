@@ -14,7 +14,7 @@
                 @Html.DisplayNameFor(model => model.Beneficiaries)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Decsription)
+                @Html.DisplayNameFor(model => model.Description)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.DonationSummary)
@@ -39,7 +39,7 @@
                 @Html.DisplayFor(modelItem => item.Beneficiaries)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Decsription)
+                @Html.DisplayFor(modelItem => item.Description)
             </td>
             <td>
                 @string.Format(new CultureInfo("fil-PH"), "{0:C2}", decimal.Parse(item.DonationSummary))

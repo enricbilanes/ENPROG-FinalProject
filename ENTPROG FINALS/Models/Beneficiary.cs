@@ -17,7 +17,7 @@ namespace ENTPROG_FINALS.Models
         public string Beneficiaries { get; set; }
 
         [Required(ErrorMessage = "Required.")]
-        public string Decsription { get; set; }
+        public string Description { get; set; }
 
         [Display (Name = "Donation Summary")]
         [Required(ErrorMessage = "Required.")]

@@ -62,13 +62,10 @@
                 }
             </td>
             <td>
-                @string.Format(new CultureInfo("fil-PH"), "{0:C2}", decimal.Parse(item.DonationAmount))
+                <text>@string.Format(new CultureInfo("fil-PH"), "{0:C2}", decimal.Parse(item.DonationAmount))</text>
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Beneficiary.Beneficiaries)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Anonymous)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Date)
@@ -81,6 +78,10 @@
                 else
                     @Html.DisplayFor(modelItem => item.Remarks)
             </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Anonymous)
+            </td>
+
             <td>
                 @{var userId = User.FindFirstValue(ClaimTypes.NameIdentifier); }
                 @if (userId == item.UserId.ToString())

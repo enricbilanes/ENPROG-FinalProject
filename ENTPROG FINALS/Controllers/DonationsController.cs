@@ -54,6 +54,8 @@ namespace ENTPROG_FINALS.Controllers
                 donation.Anonymous = record.Anonymous;             
                 donation.FirstName = GetCurrentUser().FirstName;
                 donation.LastName = GetCurrentUser().LastName;
+                donation.Date = DateTime.Now;
+                donation.Remarks = record.Remarks;
                 donation.UserId = Guid.Parse(GetCurrentUser().Id);
             }
             _context.Donations.Add(donation);
@@ -119,6 +121,7 @@ namespace ENTPROG_FINALS.Controllers
 
             donation.DonationAmount = record.DonationAmount;
             donation.Beneficiary = selectedBeneficiary;
+            donation.Remarks = record.Remarks;
             donation.Anonymous = record.Anonymous;
             _context.Donations.Update(donation);
             _context.SaveChanges();

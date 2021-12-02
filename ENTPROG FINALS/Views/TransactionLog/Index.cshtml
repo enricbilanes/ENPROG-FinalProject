@@ -7,7 +7,7 @@
 <h1>Transaction Log</h1>
 
 
-<table class="table">
+<table id="records" class="table">
     <thead>
         <tr>
             <th>
@@ -31,41 +31,52 @@
             <th>
                 @Html.DisplayNameFor(model => model.Anonymous)
             </th>
-            <th></th>
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.TransactionID)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Table)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.RecordID)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Date)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.User)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.TransactionMade)
-            </td>
-            <td>
-            @if (item.Table.Equals("Donations"))
-            {
-                @item.Anonymous
-            }
-            else
-            {
-                <text> N/A </text>
-            }
-            </td>
-        </tr>
-}
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TransactionID)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Table)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.RecordID)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Date)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.User)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TransactionMade)
+                </td>
+                <td>
+                    @if (item.Table.Equals("Donations"))
+                    {
+                        @item.Anonymous
+                    }
+                    else
+                    {
+                        <text> N/A </text>
+                    }
+                </td>
+            </tr>
+        }
     </tbody>
 </table>
+
+@section Scripts{
+    <script src="~/lib/datatables/js/jquery.dataTables.js"></script>
+    <script src="~/lib/datatables/js/dataTables.bootstrap4.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('#records').DataTable();
+        });
+
+    </script>
+}
